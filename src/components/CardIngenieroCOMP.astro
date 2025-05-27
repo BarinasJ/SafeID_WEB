@@ -1,0 +1,172 @@
+---
+interface Props {
+    imagen: string; // Link de la imagen
+    nombre: string;
+    titulo?: string;
+    descripcion: string;
+    sinlimites: string;
+    mayorlogro: string;
+}
+
+const { imagen, nombre, titulo, descripcion, sinlimites, mayorlogro } =
+    Astro.props;
+---
+
+<section class="contenedor">
+    <div class="imagen">
+        <img
+            class="imagenTokyo"
+            src="src/content/Otros/Archivos para página web/Mesa de trabajo 2.png"
+            alt="Safety in deep SAS"
+        />
+        <img class="imagenING" src={imagen} alt="Ingenieria SAFEID" />
+    </div>
+
+    <div class="texto">
+        <h2>{nombre}</h2>
+        {titulo && <h4>{titulo}</h4>}
+        <p>{descripcion}</p>
+
+        <h3>SIN LIMITES</h3>
+        <p>{sinlimites}</p>
+
+        <h3>MAYOR LOGRO</h3>
+        <p>{mayorlogro}</p>
+        <img
+            class="imgLogo"
+            src="src/content/Otros/logoIngeCOMP.png"
+            alt="SAFETY IN DEEP SAS"
+        />
+    </div>
+</section>
+
+<style>
+    .contenedor {
+        display: flex;
+        /* grid-template-columns: 49% 49%; */
+        justify-content: space-around;
+        gap: 100px;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 8px 4px 15px 13px rgba(228, 169, 45, 0.68);
+        -webkit-box-shadow: 8px 4px 15px 13px rgba(228, 169, 45, 0.68);
+        -moz-box-shadow: 8px 4px 15px 13px rgba(228, 169, 45, 0.68);
+        margin: 40px 100px;
+        padding: 20px 20px;
+        border-radius: 15px;
+        max-height: 690px;
+        flex-wrap: wrap;
+    }
+    .imagen {
+        height: 600px;
+        max-width: 600px;
+        display: flex; /* Enable flexbox for positioning */
+        position: relative; /* Needed for absolute positioning of the overlay image */
+        width: 300px; /* Define the desired width */
+        margin-left: 50px;
+        align-items: end;
+        place-self: center;
+        padding-bottom: 80px;
+    }
+
+    .imagenTokyo {
+        height: 560px;
+        margin-bottom: -12px;
+    }
+
+    .imagenING {
+        max-width: 700px;
+        position: absolute; /* Take the image out of the normal flow */
+        object-fit: contain;
+
+        width: 100%;
+        display: flex;
+        margin-bottom: -12px;
+        /* Adjust as needed to fit the overlay image */
+        /* Optional: Add transparency or other visual effects */
+        /* opacity: 0.8; */
+
+        margin-left: 200px;
+    }
+
+    .imgLogo {
+        width: 150px;
+        height: auto;
+        align-self: end;
+        background-color: #e4a92d;
+
+        justify-self: flex-end;
+        position: relative;
+        right: 0;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        padding: 20px 100px;
+        margin-right: -20px;
+    }
+
+    .texto {
+        color: #002c41;
+        max-width: 600px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    h2 {
+        font-size: 3.3em;
+        margin: 0;
+        margin-top: 20px;
+    }
+
+    h3 {
+        font-size: 1.7em;
+        margin: 5px 0px;
+    }
+
+    h4 {
+        margin: 0px 0px;
+        font-size: 1.4em;
+    }
+
+    p {
+        margin: 5px 0px;
+        margin-bottom: 20px;
+    }
+
+    p:first-of-type {
+    }
+
+    @media (max-width: 768px) {
+        .imagen,
+        .imgLogo {
+            display: none;
+        }
+
+        .contenedor {
+            margin: 20px;
+            padding: 10px;
+            box-shadow: 4px 2px 8px 6px rgba(228, 169, 45, 0.68);
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .texto {
+            max-width: 100%;
+        }
+
+        h2 {
+            font-size: 1.65em; /* Aproximadamente la mitad */
+        }
+
+        h3 {
+            font-size: 0.85em;
+        }
+
+        h4 {
+            font-size: 0.7em;
+        }
+
+        p {
+            font-size: 0.75em;
+            margin-bottom: 10px;
+        }
+    }
+</style>

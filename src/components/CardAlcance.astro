@@ -1,0 +1,36 @@
+---
+interface Props {
+    titulo: string;
+    descripcion: string; // Link de la imagen
+}
+
+const { titulo, descripcion } = Astro.props;
+---
+
+<div>
+    <h3 class="titulo">{titulo}</h3>
+    <p class="descripcion">{descripcion}</p>
+</div>
+
+<style>
+    h3 {
+        font-size: 3em;
+        color: white;
+        margin: 0;
+    }
+
+    p {
+        color: white;
+        font-size: 1.1em;
+        text-align: justify;
+    }
+
+    div {
+        background-color: #e3b043;
+        margin: 30px 70px;
+        margin-top: 20px;
+        border-radius: 10px;
+        padding: 30px 40px;
+        max-width: 1600px;
+    }
+</style>

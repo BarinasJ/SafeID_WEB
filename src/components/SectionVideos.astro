@@ -1,0 +1,75 @@
+---
+interface Props {
+    titulo: string;
+    video1: string;
+    video2: string;
+}
+
+const { titulo, video1, video2 } = Astro.props;
+---
+
+<section>
+    <h2>{titulo}</h2>
+    <div class="global">
+        <div class="contenedor">
+            <iframe
+                src={video1}
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+        </div>
+        <div class="contenedor">
+            <iframe
+                width="560"
+                height="315"
+                src={video2}
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+        </div>
+    </div>
+</section>
+
+<style>
+    iframe {
+        width: 650px;
+        height: 365px;
+        border-radius: 5px;
+        min-width: 400px;
+    }
+
+    section {
+        margin: 0px 0px 0px 0px;
+    }
+
+    .global {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px 0px 60px 0px;
+        gap: 50px;
+        flex-wrap: wrap;
+    }
+
+    .contenedor {
+        width: 680px;
+        height: 395px;
+        background-color: #e4a92d;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h2 {
+        display: flex;
+        justify-self: center;
+        align-self: center;
+        font-size: 50px;
+        color: #002c41;
+    }
+</style>

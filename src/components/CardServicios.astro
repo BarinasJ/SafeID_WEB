@@ -1,0 +1,65 @@
+---
+interface Props {
+    imagen: string; // Link de la imagen
+    titulo: string;
+    descripcion: string;
+}
+
+const { imagen, titulo, descripcion } = Astro.props;
+---
+
+<div>
+    <img class="imagen" src={imagen} alt={`Imagen del servicio ${titulo}`} />
+    <h3 class="titulo">{titulo}</h3>
+    <p class="descripcion">{descripcion}</p>
+</div>
+
+<style>
+    div {
+        display: flex;
+        flex-direction: column;
+        height: 50vh;
+        border-radius: 15px;
+        border: 2px solid rgba(255, 255, 255, 0);
+        align-items: center;
+        justify-content: center;
+        padding: 0px 20px;
+        margin: 0px;
+    }
+
+    .imagen {
+        height: 60%;
+        width: 50%;
+        object-fit: contain;
+        cursor: pointer;
+        margin-bottom: -50px;
+    }
+
+    .titulo {
+        height: 50px;
+        display: flex;
+
+        font-size: 1.3em;
+        color: #002c41;
+        cursor: pointer;
+        text-align: center;
+        align-self: center;
+        max-width: 190px;
+        margin: 0px 0px 10px 0px;
+    }
+
+    .descripcion {
+        height: 20%;
+        display: flex;
+        margin: 0;
+        width: 95%;
+        margin-left: px;
+        text-align: justify;
+    }
+
+    @media (max-width: 768px) {
+        .titulo {
+            margin-top: 30px;
+        }
+    }
+</style>

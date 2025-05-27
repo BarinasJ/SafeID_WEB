@@ -1,0 +1,503 @@
+---
+interface Props {
+	tituloPagina?: String;
+}
+
+const { tituloPagina = "SafeID" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" href="../../public/ICON_SafeID.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+			rel="stylesheet"
+		/>
+		<meta name="generator" content={Astro.generator} />
+		<title>{tituloPagina}</title>
+	</head>
+	<body>
+		<nav>
+			<img class="logoNav" src="../../public/LogoSafeAzul.png" alt="" />
+			<ul>
+				<li><a class="botonNav" href="/">Inicio</a></li>
+				<li>
+					<a class="botonNav" href="/servicios">Nuestros servicios</a>
+				</li>
+				<li><a class="botonNav" href="/nosotros">Nosotros</a></li>
+				<li>
+					<a href="/contactanos" class="boton-contacto">Contáctanos</a
+					>
+				</li>
+			</ul>
+		</nav>
+
+		<slot />
+
+		<footer>
+			<div class="parteUno">
+				<div class="iconos">
+					<!-- <img
+						class="imgIconos"
+						src="src/content/ImagenesSafeID/logos/LogoSafeIDblanco.png"
+						alt="SafeID-000iconWhite"
+					/> -->
+					<div class="informacionFooter">
+						<h3>Oficina</h3>
+						<h4 class="direccion">Cra 62 # 44-26</h4>
+						<h4 class="correo">atencionCliente@safeid-sas.com</h4>
+						<hr />
+						<h4 class="telefono">01 8000 958 000</h4>
+						<h3>Atencion a Whatsapp</h3>
+						<h4></h4>
+					</div>
+				</div>
+				<div>
+					<h3>¡Síguenos!</h3>
+					<ul>
+						<li class="logo">
+							<img
+								src="src/content/ImagenesSafeID/imagenes ejecutivos/logotipo-de-instagram.png"
+								alt="instagram"
+								class="icono"
+							/><h4>
+								<a
+									target="_blank"
+									class="linkRedess"
+									href="https://www.instagram.com/safeid.ciberseguridad?igsh=MWZ6aG9qcGRjamszMg%3D%3D&utm_source=qr"
+									>Instagram</a
+								>
+							</h4>
+						</li>
+						<li class="logo">
+							<img
+								src="src/content/ImagenesSafeID/imagenes ejecutivos/youtube.png"
+								alt="youtube"
+								class="icono youtube"
+							/><h4>
+								<a
+									target="_blank"
+									class="linkRedess"
+									href="https://www.youtube.com/@Safeidsas2011"
+									>Youtube</a
+								>
+							</h4>
+						</li>
+						<li class="logo">
+							<img
+								src="src/content/ImagenesSafeID/imagenes ejecutivos/linkedin.png"
+								alt="linkedin"
+								class="icono"
+							/><h4>
+								<a
+									target="_blank"
+									class="linkRedess"
+									href="https://www.linkedin.com/company/2812781/admin/dashboard/"
+									>LinkedIn</a
+								>
+							</h4>
+						</li>
+					</ul>
+				</div>
+				<div>
+					<h3>¿Tienes dudas?</h3>
+					<ul class="listaFooter">
+						<li>
+							<a
+								class="footerListElm"
+								href="/contactanos#politicas">Políticas</a
+							>
+						</li>
+						<li>
+							<a
+								class="footerListElm"
+								href="/contactanos#politicas">Línea Ética</a
+							>
+						</li>
+						<li>
+							<a
+								class="footerListElm"
+								href="/contactanos#politicas"
+								>Objetivos del SIG</a
+							>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="parteDos">
+				<hr />
+				<h3 class="ultimaFrase">
+					Safety In Deep © 2025. Todos los derechos reservados. –
+					Términos y Condiciones – Políticas de Protección de Datos
+				</h3>
+			</div>
+			<img
+				class="logoFooter"
+				src="src/content/Otros/logoFooter.svg"
+				alt="logofooter"
+			/>
+		</footer>
+
+		<script is:inline>
+			document.addEventListener("DOMContentLoaded", () => {
+				const logo = document.querySelector(".logoNav");
+				const navMenu = document.querySelector("nav ul");
+
+				logo?.addEventListener("click", () => {
+					// Solo alterna en móviles
+					if (window.innerWidth <= 768) {
+						navMenu.classList.toggle("active");
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		font-family: "Ubuntu";
+		display: flex;
+		flex-direction: column;
+		overflow-x: hidden;
+		padding: 0px;
+	}
+
+	nav > img {
+		width: auto;
+		height: 150%;
+		margin: 5px 0px 10px 20px;
+	}
+
+	slot {
+		flex: 1;
+	}
+
+	nav {
+		display: flex;
+		justify-content: space-between;
+		margin: 20px 0px 0px 40px;
+		background-color: #ffffff; /* Fondo blanco */
+
+		height: 60px;
+		border-radius: 10px; /* Bordes muy redondeados */
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+		display: flex;
+		align-items: center;
+		justify-content: space-between; /* Espacio entre el logo y los enlaces */
+
+		position: fixed;
+		z-index: 1000;
+		width: 95%;
+		justify-self: center;
+	}
+
+	nav ul {
+		list-style: none;
+		padding: 0;
+		margin-right: 20px;
+		display: flex;
+		align-items: center;
+		gap: 10px; /* Espacio entre los elementos de la lista */
+	}
+
+	nav li {
+		margin: 0;
+	}
+
+	.botonNav {
+		text-decoration: none;
+		color: #232323; /* Color de texto oscuro */
+		font-size: 20px;
+		/* padding: 10px 15px; */
+		border-radius: 25px; /* Bordes redondeados para los enlaces */
+		transition: background-color 0.3s ease;
+		cursor: pointer;
+		display: flex;
+		padding: 8px 20px;
+	}
+
+	.botonNav:hover {
+		background-color: #e0e0e0; /* Un gris claro al pasar el ratón */
+		padding: 8px 20px;
+		text-decoration: none;
+	}
+
+	.boton-contacto {
+		background-color: #e4a92d; /* Color azul para el botón de contacto */
+		color: white;
+		padding: 8px 20px;
+		border-radius: 25px;
+		text-decoration: none;
+		font-size: 20px;
+		transition: background-color 0.3s ease;
+		cursor: pointer;
+		margin-left: 10px;
+		border: 0px black solid;
+	}
+
+	.boton-contacto:hover {
+		margin-left: 10px;
+		color: white;
+		background-color: #b47527; /* Un azul más oscuro al pasar el ratón */
+	}
+
+	.parteUno {
+		display: grid;
+		grid-template-columns: 30% 20% 30%;
+		justify-content: center;
+		column-gap: 15px;
+	}
+
+	footer {
+		position: relative;
+		padding: 100px 0px;
+		background: #002c41;
+		background: linear-gradient(
+			180deg,
+			rgba(0, 44, 65, 1) 11%,
+			rgba(1, 78, 114, 1) 93%
+		);
+		display: flex;
+		flex-direction: column;
+		color: rgba(225, 225, 225, 0.93);
+	}
+
+	footer div {
+		margin-left: 20px;
+	}
+
+	footer ul {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+	}
+
+	footer ul li {
+		font-weight: bold;
+	}
+
+	footer h3 {
+		font-size: 30px;
+	}
+
+	.logoFooter {
+		position: absolute; /* Permite posicionarlo de forma absoluta */
+		bottom: 0px; /* Ajusta este valor para controlar cuánto del logo queda "escondido" debajo */
+		right: 0px; /* Alinea el logo a la derecha del footer */
+		width: auto; /* Ajusta el tamaño del logo */
+		height: 100%; /* Mantiene la proporción */
+		/* Ajusta la opacidad para un efecto de marca de agua sutil */
+		z-index: 0; /* Asegura que esté por detrás del contenido del footer */
+	}
+
+	.linkRedess {
+		color: white;
+		text-decoration: none;
+	}
+
+	.linkRedess:hover {
+		text-decoration: underline;
+	}
+
+	.listaFooter li {
+		margin-bottom: 30px;
+	}
+
+	.listaFooter li:first-of-type {
+		margin-top: 20px;
+	}
+
+	.logo {
+		width: auto;
+		height: 30px;
+		display: flex;
+		justify-content: start;
+		align-items: center;
+		flex-wrap: nowrap;
+		margin: 10px;
+		font-weight: normal;
+	}
+
+	.logo img {
+		height: 100%;
+		width: auto;
+		margin-right: 10px;
+	}
+
+	.footerListElm {
+		cursor: pointer;
+		color: white;
+		text-decoration: none;
+	}
+
+	.footerListElm:hover {
+		text-decoration: underline;
+	}
+
+	.imgIconos {
+		width: 300px;
+		margin: -100px 0px 0px 0px;
+	}
+
+	.redes {
+		display: grid;
+		grid-template-columns: 24% 24% 24% 24%;
+		column-gap: 5px;
+	}
+
+	.icono {
+		max-width: 100px;
+		align-self: center;
+		justify-self: center;
+	}
+
+	.youtube {
+		margin-top: 10px;
+	}
+
+	.informacionFooter hr {
+		width: 70%;
+	}
+	.parteDos {
+		width: 90%;
+		align-self: center;
+		text-align: center;
+	}
+
+	.parteDos h3 {
+		font-size: 20px;
+	}
+
+	.parteDos hr {
+		width: 80%;
+		align-self: center;
+		justify-self: center;
+		height: 3px;
+	}
+
+	hr {
+		border: none; /* elimina el borde predeterminado */
+		height: 1px; /* grosor de la línea */
+		background-color: rgb(210, 210, 210); /* color de fondo negro */
+
+		margin: 1rem 0; /* separación vertical opcional */
+	}
+
+	/* Estilos responsive */
+	@media (max-width: 768px) {
+		/* NAV */
+		nav {
+			flex-direction: column;
+			align-items: flex-start;
+			padding: 10px 20px;
+			height: auto;
+			position: relative;
+			border-radius: 0;
+			width: 100%;
+			margin: 0;
+		}
+
+		nav > img {
+			height: 60px;
+			margin: 0 0 10px 0;
+		}
+
+		nav ul {
+			display: none;
+		}
+
+		.logoNav {
+			align-self: center;
+		}
+
+		nav ul.active {
+			display: flex !important;
+			flex-direction: column;
+		}
+
+		nav li {
+			width: 100%;
+		}
+
+		.botonNav,
+		.boton-contacto {
+			width: 100%;
+			justify-content: flex-start;
+			padding: 10px;
+			font-size: 18px;
+			margin: 0px;
+		}
+
+		.boton-contacto {
+			margin-left: 0;
+		}
+
+		/* FOOTER */
+		.parteUno {
+			grid-template-columns: 1fr;
+			row-gap: 30px;
+			text-align: left;
+			padding: 0 20px;
+		}
+
+		footer div {
+			margin-left: 0;
+		}
+
+		.imgIconos {
+			width: 180px;
+			margin: 0;
+		}
+
+		footer h3 {
+			font-size: 22px;
+		}
+
+		footer h4 {
+			font-size: 16px;
+		}
+
+		.logo {
+			height: auto;
+			font-size: 16px;
+		}
+
+		.logo img {
+			width: 24px;
+		}
+
+		.parteDos h3 {
+			font-size: 16px;
+			text-align: center;
+		}
+
+		.parteDos hr {
+			width: 100%;
+		}
+	}
+
+	@media (max-width: 768px) {
+		nav ul {
+			display: none;
+		}
+
+		nav ul.visible {
+			display: flex;
+		}
+	}
+</style>
+
+<!-- #e4a92d  AMARILLO -->
+<!-- #002c41  AZUL -->
+<!-- #b47427 ARENA OSCURO-->
+<!-- #E3E3E3 GRIS-->

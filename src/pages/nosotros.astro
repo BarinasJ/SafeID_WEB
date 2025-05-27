@@ -1,0 +1,240 @@
+---
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+import Main from "../components/Main.astro";
+import CardServicios from "../components/CardServicios.astro";
+import CardIngeniero from "../components/CardIngNosotros.astro";
+import CardCliente from "../components/CardCliente.astro";
+import { imageConfig } from "astro:assets";
+import trabajemosJuntos from "../components/trabajemosJuntos.astro";
+import CardMisionVision from "../components/Mision&Vision.astro";
+import CardIngenieroCOMP from "../components/CardIngenieroCOMP.astro";
+import CardIngNosotros from "../components/CardIngNosotros.astro";
+import MisionVision from "../components/Mision&Vision.astro";
+import CardAlcance from "../components/CardAlcance.astro";
+import CardValores from "../components/CardValores.astro";
+import HeaderINGS from "../components/HeaderINGS.astro";
+import SectionNuestrosIngenieros from "../components/SectionNuestrosIngenieros.astro";
+
+const infoHeaderING = {
+    titulo: "SOMOS SAFEID",
+    descripcion:
+        "lorem ctrónica, Master en comunicaciones y MBA 22 años de experiencia Certificaciones alcanzadas: CCSA, CCSE, ISO 27001 ",
+    // "Es un gusto para nosotros estar aquí y tener la oportunidad de presentarnos como equipo. Somos un grupo de ingenieros especializados en ciberseguridad, comprometidos con el diseño e implementación de soluciones óptimas, innovadoras y oportunas que protegen la información crítica de nuestros clientes.En un entorno digital cada vez más complejo y dinámico, combinamos experiencia técnica, pensamiento estratégico y trabajo colaborativo para anticiparnos a amenazas y garantizar entornos seguros. Cada miembro del equipo aporta habilidades únicas que, en conjunto, fortalecen nuestra capacidad para enfrentar desafíos y entregar resultados de alto impacto. A lo largo de esta presentación, conocerán quiénes somos, qué hacemos y cómo trabajamos para proteger lo que más importa: la información.",
+};
+
+const ingSandra = {
+    imagen: "src/content/Otros/Archivos para página web/imagen Sandra png.png",
+    nombre: "SANDRA SUÁREZ",
+    titulo: "GERENTE GENERAL",
+    descripcion:
+        "Ingeniera electrónica, Master en comunicaciones y MBA 22 años de experiencia Certificaciones alcanzadas: CCSA, CCSE, ISO 27001 LA, ISO 23001",
+    sinlimites:
+        "El principal desafío comenzó con la decisión de emprender, primero mediante la creación de una empresa, y posteriormente, al definir su orientación hacia el ámbito de la ciberseguridad. Este enfoque implicaba un reto adicional, dado que, hasta entonces, mi trayectoria profesional en el sector se había centrado exclusivamente en la implementación de soluciones, sin contar con reconocimiento como empresaria o líder en la industria.  ",
+    mayorlogro:
+        "Consolidar una empresa de servicios en ciberseguridad y seguridad de la información, logrando mantenernos en el mercado y crecer de manera orgánica." +
+        " Mi objetivo es transmitir a los ingenieros de SafeID la filosofía de que amar lo que hacemos es fundamental para ofrecer un servicio de excelencia a nuestros clientes.",
+};
+
+const ingDaniel = {
+    imagen: "src/content/Otros/Archivos para página web/Imagen Daniel png.png",
+    nombre: "DANIEL SUÁREZ",
+    titulo: "DIRECTOR COMERCIAL",
+    descripcion:
+        "Ingeniero Electrónico Master en Ciberseguridad 12 años de experiencia.  Certificaciones alcanzadas: CCSME, ENDPOINT, CLOUDGUARD. AL ISO 27001. AI 22301",
+    sinlimites:
+        "El principal desafío comenzó con la decisión de emprender, primero mediante la creación de una empresa, y posteriormente, al definir su orientación hacia el ámbito de la ciberseguridad. Este enfoque implicaba un reto adicional, dado que, hasta entonces, mi trayectoria profesional en el sector se había centrado exclusivamente en la implementación de soluciones, sin contar con reconocimiento como empresaria o líder en la industria.  ",
+    mayorlogro:
+        "Consolidar una empresa de servicios en ciberseguridad y seguridad de la información, logrando mantenernos en el mercado y crecer de manera orgánica. Mi objetivo es transmitir a los ingenieros de SafeID la filosofía de que amar lo que hacemos es fundamental para ofrecer un servicio de excelencia a nuestros clientes.",
+};
+
+const ingJefferson = {
+    imagen: "src/content/Otros/Archivos para página web/imagen Jefferson png.png",
+    nombre: "JEFFERSON ROMERO",
+    titulo: "DIRECTOR DE INGENIERÍA",
+    descripcion:
+        "Ingeniero Electrónico. Especialista en gerencia de proyectos. 6 años de experiencia. Certificaciones alcanzadas: CCSM, CCSM ELITE ",
+    sinlimites:
+        "Lograr un equilibrio entre crecimiento y calidad ha sido un reto constante. Asegurar que los clientes sigan recibiendo un servicio excepcional mientras nuestro equipo evoluciona profesionalmente, nos ha llevado a estructurar procesos sólidos y fomentar la comunicación efectiva.  ",
+    mayorlogro:
+        "La consolidación de un equipo, que no sólo se enfoca en resolver problemas técnicos, sino que entiende la importancia del trabajo en conjunto, el aprendizaje continuo y la calidad en la atención al cliente. ",
+};
+
+const ingSebastian = {
+    imagen: "src/content/Otros/Archivos para página web/imagen Sebastian png.png",
+    nombre: "SEBASTÍAN CÁRDENAS",
+    titulo: "ACCOUNT MANAGER",
+    descripcion:
+        "Ingeniero Electrónico. Especialista en Teleinformática.  Master en Ciberseguridad. 11 años de experiencia en su profesión. Certificaciones alcanzadas: CCSE, CCCS, ISO 27001 AI, ISO 23001AI",
+    sinlimites:
+        "Uno de los principales desafíos es garantizar que las soluciones que ofrecemos a nuestros clientes sean efectivas y se integren de manera funcional en sus plataformas e infraestructuras.   ",
+    mayorlogro:
+        "Uno de los logros más importantes ha sido reposicionar la marca SAFEID en distintas regiones de Colombia, explorando áreas donde la industria de la información no esta centralizada, pero donde existe una creciente necesidad de implementar seguridad de la información. Sabemos que los vectores de ataque han evolucionado y aumentado en cantidad, lo que hace aún más urgente fortalecer protección digital. La ciberseguridad surge como una respuesta a las vulnerabilidades inherentes a la computación. A medida que el mundo tecnológico y la conectividad se convierte en un pilar fundamental para la protección de la información. ",
+};
+
+const ingDavid = {
+    imagen: "src/content/Otros/Archivos para página web/imagen David png.png",
+    nombre: "DAVID GÓMEZ MORA",
+    titulo: "DIRECTOR DE PROYECTOS",
+    descripcion:
+        "Ingeniero Electrónico Especialista en Seguridad Informática. 6 años de experiencia  Certificaciones Alcanzadas: CCSM ELITE, VSX, CCME, CCVS, CCTE. Perimeter 81 Technical certification, InsightVM Certified Administrator. ",
+    sinlimites: "",
+    mayorlogro:
+        "Mi mayor logro ha sido contribuir activamente al crecimiento y evolución de la empresa. A lo largo de mi trayectoria, he apoyado diversas áreas y asumido distintos niveles de responsabilidad, desde ingeniería nivel 1 hasta roles directivos, implementando mejoras clave, especialmente en la gestión de proyectos, un proceso de mejora continua, en el que también me incluyo. A pesar de los desafíos, considero que he cumplido con las expectativas y he asegurado la correcta ejecución de la mayoría de los proyectos y tareas asignadas.  ",
+};
+
+const ingSantiago = {
+    imagen: "src/content/Otros/Archivos para página web/imagen Santiago png.png",
+    nombre: "SANTIAGO OCHOA",
+    titulo: "LIDER DE SOPORTE",
+    descripcion:
+        "Líder de soporte. Ingeniero Electrónico.Especialista en seguridad informática. 6 años de experiencia Certificaciones alcanzadas: ISO270011A, CCSA, CCSE",
+    sinlimites:
+        "Uno de los mayores desafíos de mi carrera fue liderar un equipo de soporte en Seguridad Informática para asistir a un grupo de entidades de alto nivel. Más que garantizar la continuidad operativa de infraestructuras críticas, el reto implicaba gestionar incidentes en tiempo real, optimizar tiempos de respuesta y fortalecer la relación con nuestros clientes.",
+    mayorlogro:
+        "Mi mayor logro ha sido evolucionar hacia un liderazgo estratégico, consolidándome como un referente en la gestión de infraestructuras críticas en sectores clave. Más allá de los resultados tangibles, valoro especialmente el reconocimiento de colegas, clientes y equipos, quienes destacan mi capacidad para ofrecer un liderazgo claro y efectivo en entornos de alta exigencia. Mi objetivo es seguir creciendo, asumir nuevos desafíos y generar un impacto positivo en cada proyecto y equipo con el que colaboro.  ",
+};
+
+const mision = {
+    titulo: "Mision",
+    descripcion:
+        "SafeID se enfoca en brindar acompañamiento y asesoría a todos sus clientes en la identificación de los riesgos de Seguridad de la Información, para ayudarlos a determinar y soportar las mejores soluciones a nivel de procesos e infraestructura y darles la tranquilidad de contar con el respaldo de un equipo con experiencia y conocimiento, garantizando la mejor calidad en el servicio",
+};
+
+const vision = {
+    titulo: "Vision",
+    descripcion:
+        "Ser la compañía de Asesoría en Seguridad de la Información más reconocida en acompañar a sus clientes en el proceso de transformación digital, mediante diseños e soluciones flexibles y seguras, siempre bajo el estándar que nos caracteriza de servicio fundado en conocimiento, experiencia y soluciones innovadoras del mercado.",
+};
+
+const vision2 = {
+    titulo: "Visn",
+    descripcion:
+        "Ser la awdawcompañía de Asesoría en Seguridad de la Información más reconocida en acompañar a sus clientes en el proceso de transformación digital, mediante diseños e soluciones flexibles y seguras, siempre bajo el estándar que nos caracteriza de servicio fundado en conocimiento, experiencia y soluciones innovadoras del mercado.",
+};
+
+const alcance = {
+    titulo: "Alcance",
+    descripcion:
+        "Brindar acompañamiento y asesoría en la identificación de los riesgos de Seguridad de la Información y Ciberseguridad y mediante proyectos adecuados, se proporciona, administra y soporta las mejores soluciones a todos nuestros clientes, contando con un equipo de trabajo certificado para suministrar servicios y soluciones de partners de negocio. No aplica los numerales de la ISO 9001:2015 7.1.5.2 Trazabilidad de las mediciones y 8.3 Diseño y Desarrollo, dado que SAFEID no diseña ni desarrolla productos o servicios puesto que todas las implementaciones se basan en los requisitos del cliente y el marco de los fabricantes; así mismo tampoco utiliza equipos ni software para la medición de variables de aceptación de la prestación de servicio, por ende, no se hace trazabilidad de las mediciones.",
+};
+
+const informacionHero = {
+    tituloMain: "SU TRANQUILIAD, NUESTRA PRIORIDAD",
+    imagen: "src/content/ImagenesSafeID/CandadoGrande/Mesa de trabajo 8.png",
+    tituloHero: "Nuestra Historia",
+    infoHero:
+        "SafeID nació el 14 de junio de 2011 con una visión clara: transformar los servicios de ciberseguridad a través de un enfoque integral. Desde el inicio,combinamos infraestructura y consultoría para ofrecer soluciones completas,capaces de responder a los desafíos del entorno digital. Vimos una necesidad enel mercado y formamos un equipo de ingenieros altamente capacitados,certificados y apasionados, listos para brindar asesoría técnica y estratégica.manteniéndonos fieles a nuestros principios: excelencia técnica, cercanía con elcliente y soluciones alineadas con los nuevos retos de la ciberseguridad.",
+};
+---
+
+<Layout tituloPagina="Nosotros | SafeID">
+    <Main
+        tituloMain={informacionHero.tituloMain}
+        imagen={informacionHero.imagen}
+        tituloHero={informacionHero.tituloHero}
+        infoHero={informacionHero.infoHero}
+    />
+    <div class="misionVision">
+        <MisionVision titulo={mision.titulo} descripcion={mision.descripcion} />
+
+        <MisionVision titulo={vision.titulo} descripcion={vision.descripcion} />
+    </div>
+    <CardAlcance titulo={alcance.titulo} descripcion={alcance.descripcion} />
+
+    <CardValores />
+
+    <SectionNuestrosIngenieros
+        titulo="SOMOS SAFEID"
+        descripcion1="Es un gusto para nosotros estar aquí y tener la oportunidad de presentarnos como equipo. Somos un grupo de ingenieros especializados en ciberseguridad, comprometidos con el diseño e implementación de soluciones óptimas, innovadoras y oportunas que protegen la información crítica de nuestros clientes."
+        ,
+        descripcion2="En un entorno digital cada vez más complejo y dinámico, combinamos experiencia técnica, pensamiento estratégico y trabajo colaborativo para anticiparnos a amenazas y garantizar entornos seguros. Cada miembro del equipo aporta habilidades únicas que, en conjunto, fortalecen nuestra capacidad para enfrentar desafíos y entregar resultados de alto impacto. A lo largo de esta presentación, conocerán quiénes somos, qué hacemos y cómo trabajamos para proteger lo que más importa: la información."
+    />
+
+    <section id="ingeSandra">
+        <CardIngenieroCOMP
+            imagen={ingSandra.imagen}
+            nombre={ingSandra.nombre}
+            titulo={ingSandra.titulo}
+            descripcion={ingSandra.descripcion}
+            sinlimites={ingSandra.sinlimites}
+            mayorlogro={ingSandra.mayorlogro}
+        />
+    </section>
+    <hr />
+    <section id="ingeDaniel">
+        <CardIngenieroCOMP
+            imagen={ingDaniel.imagen}
+            nombre={ingDaniel.nombre}
+            titulo={ingDaniel.titulo}
+            descripcion={ingDaniel.descripcion}
+            sinlimites={ingDaniel.sinlimites}
+            mayorlogro={ingDaniel.mayorlogro}
+        />
+    </section>
+    <hr />
+    <section id="ingeJefferson">
+        <CardIngenieroCOMP
+            imagen={ingJefferson.imagen}
+            nombre={ingJefferson.nombre}
+            titulo={ingJefferson.titulo}
+            descripcion={ingJefferson.descripcion}
+            sinlimites={ingJefferson.sinlimites}
+            mayorlogro={ingJefferson.mayorlogro}
+        />
+    </section>
+    <hr />
+    <section id="ingeSebastian">
+        <CardIngenieroCOMP
+            imagen={ingSebastian.imagen}
+            nombre={ingSebastian.nombre}
+            titulo={ingSebastian.titulo}
+            descripcion={ingSebastian.descripcion}
+            sinlimites={ingSebastian.sinlimites}
+            mayorlogro={ingSebastian.mayorlogro}
+        />
+    </section>
+    <section ondblclick="ingeDavid">
+        <CardIngenieroCOMP
+            imagen={ingDavid.imagen}
+            nombre={ingDavid.nombre}
+            titulo={ingDavid.titulo}
+            descripcion={ingDavid.descripcion}
+            sinlimites={ingDavid.sinlimites}
+            mayorlogro={ingDavid.mayorlogro}
+        />
+    </section>
+    <section id="ingeSantiago">
+        <CardIngenieroCOMP
+            imagen={ingSantiago.imagen}
+            nombre={ingSantiago.nombre}
+            titulo={ingSantiago.titulo}
+            descripcion={ingSantiago.descripcion}
+            sinlimites={ingSantiago.sinlimites}
+            mayorlogro={ingSantiago.mayorlogro}
+        />
+    </section>
+</Layout>
+
+<style>
+    body {
+        width: 100%;
+        height: 100%;
+        font-family: "Ubuntu";
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        padding: 0px;
+        margin: 0px;
+    }
+    .misionVision {
+        display: flex;
+        margin: 0px 40px;
+    }
+
+    @media (max-width: 768px) {
+        .misionVision {
+            flex-wrap: wrap;
+        }
+    }
+</style>

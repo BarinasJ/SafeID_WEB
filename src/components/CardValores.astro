@@ -1,0 +1,270 @@
+---
+interface Props {
+    titulo?: string;
+    descripcion?: string; // Link de la imagen
+}
+
+const { titulo, descripcion } = Astro.props;
+---
+
+<div>
+    <h3 class="titulo">{titulo}</h3>
+    <p class="descripcion">{descripcion}</p>
+</div>
+
+<body class=".cuerpo">
+    <h1>
+        Nuestros <span>Valores</span>
+    </h1>
+    <div class="cards-grid">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div
+                    class="flip-card-front"
+                    style="background-image: url('src/content/Otros/Iconos de valores para página web/Mesa de trabajo 1.png');"
+                >
+                </div>
+                <div class="flip-card-back">
+                    <span class="resaltoO">Excelencia Técnica</span>
+                    <br />
+                    <br /> Nos esforzamos por ofrecer soluciones seguras, eficientes
+                    y alineadas con los más altos estándares del sector. Valoramos
+                    la especialización, el conocimiento actualizado y la calidad
+                    en cada proceso, promoviendo una cultura de mejora continua basada
+                    en el saber experto
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div
+                    class="flip-card-front"
+                    style="background-image: url('src/content/Otros/Iconos de valores para página web/Mesa de trabajo 3.png');"
+                >
+                </div>
+                <div class="flip-card-back">
+                    <span class="resaltoO">Trabajo en Equipo</span>
+
+                    <br />
+                    <br />Somos una organización que se construye sobre
+                    relaciones sólidas y colaborativas. Promovemos el trabajo en
+                    equipo, la comunicación abierta y el respeto mutuo,
+                    entendiendo que el verdadero éxito surge de la suma de
+                    nuestras capacidades y la sinergia entre áreas.
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div
+                    class="flip-card-front"
+                    style="background-image: url('src/content/Otros/Iconos de valores para página web/Mesa de trabajo 4.png');"
+                >
+                </div>
+                <div class="flip-card-back">
+                    <span class="resaltoO">
+                        Responsabilidad y Transparencia
+                    </span><br /><br />Actuamos con integridad, ética y
+                    coherencia. Cumplimos nuestros compromisos y promovemos una
+                    gestión clara y responsable, fortaleciendo la confianza con
+                    nuestros equipos, aliados y clientes a través de la
+                    transparencia en nuestras decisiones y acciones.
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div
+                    class="flip-card-front"
+                    style="background-image: url('src/content/Otros/Iconos de valores para página web/Mesa de trabajo 5.png');"
+                >
+                </div>
+                <div class="flip-card-back">
+                    <span class="resaltoO"> Adaptabilidad con Propósito</span>
+                    <br /><br />Nos movemos con agilidad frente a los desafíos
+                    del entorno, manteniendo siempre la claridad en nuestros
+                    objetivos estratégicos. Vemos el cambio como una oportunidad
+                    para innovar, crecer y evolucionar de forma sostenible y con
+                    sentido.
+                </div>
+            </div>
+        </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div
+                    class="flip-card-front"
+                    style="background-image: url('src/content/Otros/Iconos de valores para página web/Mesa de trabajo 6.png');"
+                >
+                </div>
+                <div class="flip-card-back">
+                    <span class="resaltoO">Compromiso con el Desarrollo</span>
+                    <br /><br />En SafeID creemos firmemente en el crecimiento
+                    continuo como base del progreso. Fomentamos el aprendizaje,
+                    la capacitación técnica y el desarrollo personal y
+                    profesional de nuestros colaboradores, impulsando el talento
+                    que transforma nuestra organización y aporta valor a
+                    nuestros clientes.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<style>
+    /*
+    ** All elements border-box
+*/
+    *,
+    *:before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    /*
+    ** Root element font size
+    ** No default margins and paddings
+*/
+    html,
+    body {
+        font-size: 16px;
+        margin: 0;
+        padding: 0;
+    }
+
+    /*
+    **root elements display block
+*/
+    html,
+    body {
+        display: block;
+    }
+
+    /*
+    ** Body main style
+*/
+    body {
+        line-height: 1.317101995;
+        scroll-behavior: smooth;
+        font-family: sans-serif;
+        background-color: #ffffff;
+    }
+
+    button:focus {
+        outline: 0;
+    }
+
+    img,
+    embed,
+    svg,
+    audio,
+    canvas,
+    iframe,
+    video {
+        max-width: 100%;
+        height: auto;
+        vertical-align: middle;
+    }
+
+    hr {
+        height: 0;
+        border: 0;
+        border-bottom: 1px solid #dfdfdf;
+        margin: 0;
+    }
+
+    body {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding: 0px 0px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 4.2rem;
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
+
+    h1 span {
+        color: #002c41;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .cards-grid {
+        display: flex;
+        gap: 80px;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 60px;
+        flex-wrap: wrap;
+        margin: 50px 0px;
+    }
+
+    /* FLIP CARD */
+    .flip-card {
+        width: 275px;
+        height: 300px;
+        perspective: 2000px;
+    }
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        border-radius: 28px;
+        transition: all 550ms cubic-bezier(0.1, 0.22, 0.8, 1.13);
+        transform-style: preserve-3d;
+    }
+    .flip-card-front,
+    .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 28px;
+        backface-visibility: hidden;
+    }
+    .flip-card-front {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    .flip-card-back {
+        font-size: 15px;
+        text-align: center;
+        display: grid;
+        place-items: center;
+        padding: 32px;
+        background-color: #b1becf;
+        transform: rotateY(180deg);
+        color: black;
+    }
+
+    .resaltoO {
+        font-weight: bolder;
+        margin-bottom: -33px;
+    }
+
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(-180deg);
+    }
+
+    @media (min-width: 1199.98px) {
+        .cards-grid {
+            display: flex;
+            gap: 80px;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 60px;
+            flex-wrap: wrap;
+            padding: 0px 200px;
+        }
+    }
+</style>

@@ -1,0 +1,95 @@
+---
+interface Props {
+    imagen: string; // Link de la imagen
+    nombre: string;
+    puesto: string;
+    aDondeLleva?: string;
+}
+
+const { imagen, nombre, puesto, aDondeLleva } = Astro.props;
+---
+
+<div class="divImagen">
+    <img class="imagen" src={imagen} alt={`Imagen de ${nombre}`} />
+    <a class="overlay" href={aDondeLleva}>
+        <h3 class="nombre">{nombre}</h3>
+        <p class="puesto">{puesto}</p>
+    </a>
+</div>
+
+<style>
+    .nombre {
+        display: flex;
+        position: absolute;
+        font-size: 1.6em;
+        margin-bottom: 70px;
+    }
+
+    .puesto {
+        font-size: 1em;
+        display: flex;
+        position: absolute;
+        margin-top: 70px;
+    }
+
+    .divImagen {
+        position: relative;
+        width: 20%;
+        overflow: hidden;
+        margin: 10px;
+        min-width: 10%;
+    }
+
+    /* Imagen redonda */
+    .imagen {
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+        display: block;
+        transition: filter 0.3s ease;
+    }
+
+    /* Overlay con texto centrado */
+    .overlay {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%; /* Ahora ocupa todo el contenedor */
+        height: 100%;
+        background-color: rgba(30, 30, 30, 0);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Centra verticalmente */
+        align-items: center; /* Centra horizontalmente */
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        text-align: center;
+        border-radius: 50%;
+        z-index: 2; /* Por encima del ::after */
+    }
+
+    /* Efecto azul al hacer hover */
+    .divImagen::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 123, 255, 0);
+        transition: background-color 0.3s ease;
+        z-index: 1; /* Debajo de .overlay */
+        border-radius: 50%;
+    }
+
+    /* Hover: aparece texto y capa azul */
+    .divImagen:hover .overlay {
+        opacity: 1;
+    }
+
+    .divImagen:hover::after {
+        background-color: #002c4177;
+    }
+</style>

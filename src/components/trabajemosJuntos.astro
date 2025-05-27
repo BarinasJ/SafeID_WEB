@@ -1,0 +1,125 @@
+---
+interface Props {
+    titulo?: string;
+    descripcion?: string;
+}
+
+const { titulo, descripcion } = Astro.props;
+---
+
+<section class="form-container">
+    <div class="formulario">
+        <form name="trabajemosJuntoss" method="POST" data-netlify="true">
+            <div class="form-group">
+                <label for="nombres">Nombres</label>
+                <input
+                    type="text"
+                    id="nombres"
+                    name="nombres"
+                    placeholder="Andres"
+                    required
+                />
+            </div>
+
+            <div class="form-group">
+                <label for="empresa">Empresa</label>
+                <input
+                    type="text"
+                    id="empresa"
+                    name="empresa"
+                    placeholder="Corporación Técnica Cybersecurity"
+                    required
+                />
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="user123@corporation.com"
+                    required
+                />
+            </div>
+
+            <div class="form-group">
+                <label for="servicios">Servicios</label>
+                <textarea
+                    id="servicios"
+                    name="servicios"
+                    placeholder="Seguridad en la web y firewall perimetral"
+                ></textarea>
+            </div>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</section>
+
+<style>
+    .form-container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        width: 400px;
+        margin: 40px auto;
+        font-family: sans-serif;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        width: calc(100% - 12px);
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 80px;
+    }
+
+    button[type="submit"] {
+        background-color: #00467f;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        font-size: 18px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #003359;
+    }
+
+    .titulo {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .descripcion {
+        font-size: 16px;
+        margin-bottom: 20px;
+        color: #555;
+    }
+</style>

@@ -1,0 +1,290 @@
+---
+interface Props {
+    tituloMain?: String;
+    imagen: string;
+    tituloHero: String;
+    infoHero: String;
+}
+
+import Candado from "./Candado.astro";
+
+const {
+    tituloHero = "Nuestros Servicios",
+    infoHero = "En Safety In Deep, protegemos tu infraestructura digital de forma integral, desde la nube hasta los dispositivos móviles, combinando tecnología avanzada, experiencia y un enfoque preventivo. Nuestro objetivo es simple: blindar tu información, garantizar la continuidad de tu operación y ayudarte a cumplir con los más altos estándares de seguridad. Descubre cómo podemos ayudarte a estar un paso adelante frente a las amenazas.",
+    imagen,
+    tituloMain = "SU TRANQUILIAD, NUESTRA PRIORIDAD",
+} = Astro.props;
+---
+
+<!-- SafeID nació el 14 de junio de 2011 con una visión clara: transformar los
+servicios de ciberseguridad a través de un enfoque integral. Desde el inicio,
+combinamos infraestructura y consultoría para ofrecer soluciones completas,
+capaces de responder a los desafíos del entorno digital. Vimos una necesidad en
+el mercado y formamos un equipo de ingenieros altamente capacitados,
+certificados y apasionados, listos para brindar asesoría técnica y estratégica.
+Gracias a ese compromiso, hemos crecido de forma orgánica y sostenible,
+manteniéndonos fieles a nuestros principios: excelencia técnica, cercanía con el
+cliente y soluciones alineadas con los nuevos retos de la ciberseguridad. -->
+<main>
+    <Candado />
+    <img
+        class="logoBlanco"
+        src="src/content/ImagenesSafeID/logos/LogoSafeIDblanco.png"
+        alt="LogoSafeidBlanco"
+    />
+    <p>
+        {tituloMain}
+    </p>
+</main>
+<div class="frase">
+    <p class="frase-p">PROTEGEMOS SU ACTIVO MÁS VALIOSO, LA INFORMACIÓN</p>
+</div>
+
+<section class="services">
+    <img class="imagenNuestrosServicios" src={imagen} alt="ImagenSelfie" />
+    <article class="services-content">
+        <h2><br /><span class="resaltar">{tituloHero}</span></h2>
+
+        <p>
+            {infoHero}
+        </p>
+        <a href="/servicios#servicios" class="mas-informacion-button"
+            >Mas información</a
+        >
+        <div class="partner-info">
+            <h4>JUNTO A NUESTRO PARTNER</h4>
+            <img
+                class="partner-logo"
+                src="src/content/ImagenesSafeID/logos/LogoCheck Point.png"
+                alt="Check Point"
+            />
+        </div>
+    </article>
+</section>
+
+<style>
+    body::-webkit-scrollbar {
+        width: 0px; /* width of the entire scrollbar */
+    }
+
+    body::-webkit-scrollbar-track {
+        background: #002c415a; /* color of the tracking area */
+    }
+
+    body::-webkit-scrollbar-thumb {
+        background-color: #002c41; /* color of the scroll thumb */
+        border-radius: 20px; /* roundness of the scroll thumb */
+        border: 0px solid rgba(255, 255, 255, 0); /* creates padding around scroll thumb */
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        background-image: url("src/content/ImagenesSafeID/EquipoCompleto&Candados/Equipo2 - copia.png");
+        background-size: cover;
+        background-position: center;
+        background-blend-mode: multiply;
+        background-repeat: no-repeat;
+        background-color: rgba(104, 107, 111, 0.904); /* Filtro azul */
+        height: 1000px;
+        width: 100%;
+        background-attachment: fixed;
+        margin-top:;
+        position: relative;
+    }
+
+    .logoBlanco {
+        display: flex;
+        align-self: center;
+        justify-self: center;
+        position: relative;
+        margin-top: 400px;
+        width: 400px;
+    }
+
+    .equipo {
+        width: 100%;
+        height: auto;
+    }
+
+    main p {
+        color: aliceblue;
+        display: flex;
+        position: relative;
+        justify-self: start;
+        align-self: center;
+        margin-top: -50px;
+        margin-bottom: 30px;
+        font-size: 25px;
+    }
+
+    .imagenNuestrosServicios {
+        height: 50vh;
+        width: auto;
+    }
+
+    .frase {
+        background-color: #002c41;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .frase-p {
+        color: white;
+        letter-spacing: 10px;
+        font-weight: bold;
+    }
+
+    section {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        column-gap: 25px;
+    }
+
+    article p {
+        color: #101010;
+    }
+
+    h4 {
+        font-size: 1.5em;
+        color: rgb(46, 46, 46);
+    }
+
+    /* section -------------------------------------*/
+    .hero {
+        background-image: url(src/content/ImagenesSafeID/EquipoCompleto&Candados/Equipo2.png);
+        background-size: cover;
+        background-position: center;
+        background-blend-mode: multiply;
+        background-repeat: no-repeat;
+        background-color: rgba(26, 114, 208, 0.34); /* Filtro azul */
+        height: 60vh; /* Ajusta la altura según necesites */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0px;
+        text-align: center;
+    }
+
+    .hero-text {
+        color: aliceblue;
+        font-size: 1.5em; /* Ajusta el tamaño del texto principal */
+        font-weight: bold;
+    }
+
+    .services {
+        display: flex;
+        align-items: center;
+        padding: 40px 20px;
+        max-width: 1200px;
+        margin: 20px auto; /* Añade un poco de margen superior e inferior */
+        border-radius: 15px; /* Añade bordes redondeados al contenedor */
+        background-color: white; /* Un fondo gris claro */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Sombra suave */
+    }
+
+    .imagenNuestrosServicios {
+        width: auto%; /* Ajusta el ancho de la imagen */
+        height: 550px;
+        border-radius: 15px; /* Redondea solo las esquinas izquierdas */
+        object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
+        /* Sombra azul hacia arriba e izquierda */
+        box-shadow: -13px 13px 13px rgba(0, 77, 159, 0.473);
+    }
+
+    .services-content {
+        flex-grow: 1;
+        padding: 30px; /* Aumenta el padding alrededor del texto */
+        text-align: left; /* Alinea el texto a la izquierda */
+        padding-bottom: 160px;
+    }
+
+    h2 {
+        font-size: 4.5em; /* Reduce un poco el tamaño del título */
+        color: #2c3e50; /* Un color de texto más oscuro */
+        margin-bottom: 20px;
+        font-weight: 800;
+    }
+
+    .resaltar {
+        font-weight: 2400;
+        font-weight: bolder;
+    }
+
+    .services-content p {
+        color: #555;
+        line-height: 1.7; /* Aumenta el interlineado para mejor legibilidad */
+        font-size: 1em;
+        margin-bottom: 25px;
+    }
+
+    .mas-informacion-button {
+        background-color: #f39c12; /* Color naranja similar al botón */
+        color: white;
+        padding: 12px 25px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-size: 1em;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        display: inline-block; /* Para que el ancho se ajuste al contenido */
+    }
+
+    .mas-informacion-button:hover {
+        background-color: #e67e22; /* Un naranja más oscuro al pasar el ratón */
+    }
+
+    .partner-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 30px;
+        font-size: 0.9em;
+        color: #777;
+    }
+
+    .partner-logo {
+        height: 43px; /* Ajusta la altura del logo del partner */
+        margin-bottom: 17px;
+    }
+
+    /* Estilos responsivos para pantallas más pequeñas */
+    @media (max-width: 768px) {
+        .services {
+            flex-direction: column; /* Apila la imagen y el texto */
+            border-radius: 15px; /* Redondea todas las esquinas */
+            text-align: center;
+        }
+
+        .imagenNuestrosServicios {
+            width: 80%;
+            border-radius: 15px 15px 0 0; /* Redondea solo las esquinas superiores */
+            margin-bottom: 20px;
+            box-shadow: -8px 8px 15px rgba(41, 129, 223, 0.3); /* Mantén la sombra en responsive */
+        }
+
+        .services-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2em;
+        }
+
+        .partner-info {
+            justify-content: center; /* Centra la información del partner */
+        }
+    }
+
+    /* SCROLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL */
+
+    /* Estilos globales para ocultar la barra de scroll en Chrome */
+
+    /* awddddddddddddddddddddddddddddddddddddddddddddd */
+</style>

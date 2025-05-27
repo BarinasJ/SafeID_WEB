@@ -1,0 +1,145 @@
+---
+interface Props {
+    titulo: string;
+    descripcion: string; // Link de la imagen
+}
+
+const { titulo, descripcion } = Astro.props;
+---
+
+<section>
+    <div class="textoTrabajemos">
+        <h3 class="titulo tituloTrabajemos">{titulo}</h3>
+        <p class="descripcion">{descripcion}</p>
+    </div>
+    <div class="politicas">
+        <a
+            class="linkRef"
+            download="brochure"
+            href="src/content/Documents/BROCHURE SAFEID.pdf"
+            >Brochure</a
+        >
+        <a
+            class="linkRef"
+            download="Politicas HSEQ"
+            href="src/content/Documents/POLITICA HSEQ.pdf">Politicas</a
+        >
+        <a
+            class="linkRef"
+            download="Código de Ética"
+            href="src/content/Documents/GTH-DI-01 CODIGO DE ETICA (1).pdf"
+            >Codigo ética</a
+        >
+        <a
+            class="linkRef"
+            download="ObjetivosSIG"
+            href="src/content/Documents/SIG-DI-01 OBJETIVOS DEL SIG.pdf"
+            >Objetivos del SIG</a
+        >
+
+    </div>
+</section>
+
+<style>
+    section {
+        display: flex;
+        justify-content: space-between;
+        gap: 80px;
+        align-items: center;
+        margin: auto;
+        padding: 50px 70px 30px 70px;
+        border-radius: 10px;
+        flex-wrap: wrap;
+        box-shadow: 7px 7px 12px 20px rgba(227, 227, 227, 0.79);
+        -webkit-box-shadow: 7px 7px 12px 20px rgba(227, 227, 227, 0.79);
+        -moz-box-shadow: 7px 7px 12px 20px rgba(227, 227, 227, 0.79);
+        margin-bottom: 90px;
+        width: 80%;
+    }
+
+    .politicas {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 400px;
+        margin-right: 50px;
+    }
+
+    .textoTrabajemos {
+        max-width: 600px;
+        padding: 20px 60px;
+        margin-left: 50px;
+        color: #002c41;
+    }
+
+    .tituloTrabajemos {
+        font-size: 70px;
+        margin: 0;
+        line-height: 60px;
+    }
+    .textoTrabajemos p {
+        max-width: 400px;
+        font-size: 22px;
+    }
+
+    .linkRef {
+    }
+
+    .linkRef {
+        margin: 20px;
+        align-items: center;
+        appearance: none;
+        background-color: #ccccd6;
+        border-radius: 4px;
+        border-width: 0;
+        box-shadow:
+            rgba(45, 35, 66, 0.2) 0 2px 4px,
+            rgba(45, 35, 66, 0.15) 0 7px 13px -3px,
+            #d6d6e7 0 -3px 0 inset;
+        box-sizing: border-box;
+        color: #36395a;
+        cursor: pointer;
+        display: inline-flex;
+        height: 48px;
+        justify-content: center;
+        line-height: 1;
+        list-style: none;
+        overflow: hidden;
+        padding-left: 16px;
+        padding-right: 16px;
+        position: relative;
+        text-align: left;
+        text-decoration: none;
+        transition:
+            box-shadow 0.15s,
+            transform 0.15s;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        white-space: nowrap;
+        will-change: box-shadow, transform;
+        font-size: 18px;
+        color: rgb(44, 44, 44);
+    }
+
+    .linkRef:focus {
+        box-shadow:
+            #d6d6e7 0 0 0 1.5px inset,
+            rgba(45, 35, 66, 0.4) 0 2px 4px,
+            rgba(45, 35, 66, 0.3) 0 7px 13px -3px,
+            #d6d6e7 0 -3px 0 inset;
+    }
+
+    .linkRef:hover {
+        box-shadow:
+            rgba(45, 35, 66, 0.3) 0 4px 8px,
+            rgba(45, 35, 66, 0.2) 0 7px 13px -3px,
+            #d6d6e7 0 -3px 0 inset;
+        transform: translateY(-2px);
+    }
+
+    .linkRef:active {
+        box-shadow: #d6d6e7 0 3px 7px inset;
+        transform: translateY(2px);
+    }
+</style>

@@ -1,0 +1,190 @@
+---
+interface Props {
+    titulo: string;
+}
+
+const { titulo } = Astro.props;
+---
+
+<section class="aliados-section">
+    <h2 class="section-title">{titulo}</h2>
+    <div class="aliados-grid">
+        <div class="aliado-item">
+            <img
+                src="src/content/Otros/LOGOS ALIADOS/Mesa de trabajo 1.png"
+                alt="ImagenAliado1"
+            />
+        </div>
+        <div class="aliado-item">
+            <img
+                src="src/content/Otros/LOGOS ALIADOS/Mesa de trabajo 2.png"
+                alt="ImagenAliado2"
+            />
+        </div>
+        <div class="aliado-item">
+            <img
+                src="src/content/Otros/LOGOS ALIADOS/Mesa de trabajo 3.png"
+                alt="ImagenAliado3"
+            />
+        </div>
+        <div class="aliado-item">
+            <img
+                src="src/content/Otros/LOGOS ALIADOS/Mesa de trabajo 4.png"
+                alt="ImagenAliado4"
+            />
+        </div>
+        <div class="aliado-item">
+            <img
+                src="src/content/Otros/LOGOS ALIADOS/Mesa de trabajo 5.png"
+                alt="ImagenAliado5"
+            />
+        </div>
+        <div class="aliado-item">
+            <img
+                src="src/content/Otros/LOGOS ALIADOS/Mesa de trabajo 7.png"
+                alt="ImagenAliado6"
+            />
+        </div>
+    </div>
+</section>
+
+<style>
+    :root {
+        --color-primary: #002c41; /* Azul oscuro */
+        --color-secondary: #e4a92d; /* Amarillo-naranja */
+        --color-text-light: #f8f9fa;
+        --color-text-dark: #343a40;
+        --color-background-light: #f0f4f8;
+        --color-background-dark: #212529;
+        --gap-size: 30px; /* Espacio entre las celdas de la grilla */
+    }
+
+    .aliados-section {
+        padding: 30px 20px 100px 20px; /* Más padding para la sección completa */
+        background-color: var(
+            --color-background-light
+        ); /* Fondo suave para la sección */
+        text-align: center;
+    }
+
+    .section-title {
+        font-size: 3.5em; /* Tamaño del título */
+        color: var(--color-primary); /* Color azul oscuro */
+        margin-bottom: 50px; /* Espacio debajo del título */
+        font-weight: 700;
+    }
+
+    .aliados-grid {
+        display: grid;
+        /* Define 3 columnas de igual ancho (1fr) */
+        grid-template-columns: repeat(3, 1fr);
+        /* Las filas se ajustan automáticamente al contenido */
+        grid-template-rows: auto auto;
+        gap: var(--gap-size); /* Espacio entre las celdas */
+        max-width: 1200px; /* Ancho máximo para la grilla */
+        margin: 0 auto; /* Centra la grilla horizontalmente */
+        padding: 20px; /* Padding interno para la grilla */
+        background-color: var(
+            --color-text-light
+        ); /* Fondo claro para la grilla */
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra suave para la grilla */
+    }
+
+    .aliado-item {
+        background-color: white; /* Fondo blanco para cada ítem */
+        padding: 20px; /* Padding interno */
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Sombra sutil para cada ítem */
+        display: flex;
+        justify-content: center; /* Centra la imagen horizontalmente */
+        align-items: center; /* Centra la imagen verticalmente */
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease,
+            border-color 0.3s ease;
+        position: relative;
+        overflow: hidden; /* Para el efecto del borde animado */
+        border: 1px solid var(--color-background-light); /* Borde sutil por defecto */
+    }
+
+    /* Efecto de borde dinámico al pasar el ratón */
+    .aliado-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 10px;
+        border: 3px solid transparent;
+        background: linear-gradient(
+                45deg,
+                var(--color-primary),
+                var(--color-secondary)
+            )
+            border-box;
+        -webkit-mask:
+            linear-gradient(#fff 0 0) padding-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none; /* Asegura que no interfiera con los eventos del ratón */
+    }
+
+    .aliado-item:hover::before {
+        opacity: 1;
+    }
+
+    .aliado-item:hover {
+        transform: translateY(-5px); /* Efecto de levantamiento */
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); /* Sombra más pronunciada */
+        background-color: var(
+            --color-background-light
+        ); /* Fondo más claro al hacer hover */
+    }
+
+    .aliado-item img {
+        max-width: 100%; /* Ajusta el ancho máximo de la imagen al contenedor */
+        height: 120px; /* Altura fija para todas las imágenes de logo */
+        object-fit: contain; /* Asegura que el logo se ajuste sin cortarse ni estirarse */
+        transition: transform 0.3s ease;
+    }
+
+    .aliado-item:hover img {
+        transform: scale(1.05); /* Ligeramente más grande al pasar el ratón */
+    }
+
+    /* Media Queries para Responsividad */
+    @media (max-width: 992px) {
+        .aliados-grid {
+            grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
+        }
+    }
+
+    @media (max-width: 768px) {
+        .section-title {
+            font-size: 2.5em; /* Ajuste del título en móviles */
+            margin-bottom: 30px;
+        }
+        .aliados-grid {
+            grid-template-columns: 1fr; /* 1 columna en móviles */
+            padding: 10px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .aliados-section {
+            padding: 40px 15px;
+        }
+        .aliado-item {
+            padding: 15px;
+        }
+        .aliado-item img {
+            height: 100px; /* Altura más pequeña para logos en móviles pequeños */
+        }
+    }
+</style>

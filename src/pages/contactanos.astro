@@ -1,0 +1,146 @@
+---
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+import Main from "../components/Main.astro";
+import CardServicios from "../components/CardServicios.astro";
+import CardIngeniero from "../components/CardIngNosotros.astro";
+import CardCliente from "../components/CardCliente.astro";
+import { imageConfig } from "astro:assets";
+import TrabajemosJuntos from "../components/trabajemosJuntos.astro";
+import CardMisionVision from "../components/Mision&Vision.astro";
+import CardIngenieroCOMP from "../components/CardIngenieroCOMP.astro";
+import CardIngNosotros from "../components/CardIngNosotros.astro";
+import MisionVision from "../components/Mision&Vision.astro";
+import CardAlcance from "../components/CardAlcance.astro";
+import CardValores from "../components/CardValores.astro";
+import SectionVideos from "../components/SectionVideos.astro";
+import Cardpoliticas from "../components/Cardpoliticas.astro";
+import { defaultErrorMap } from "astro:schema";
+import FormsCuentanosExp from "../components/FormsCuentanosExp.astro";
+import SectionAliados from "../components/SectionAliados.astro";
+
+const informacionHero = {
+    tituloMain: "SU TRANQUILIAD, NUESTRA PRIORIDAD",
+    imagen: "src/content/ImagenesSafeID/CandadoGrande/Mesa de trabajo 5.png",
+    tituloHero: "Nuestros Servicios",
+    infoHero:
+        "En Safety In Deep, protegemos tu infraestructura digital de forma integral, desde la nube hasta los dispositivos móviles, combinando tecnología avanzada, experiencia y un enfoque preventivo. Nuestro objetivo es simple: blindar tu información, garantizar la continuidad de tu operación y ayudarte a cumplir con los más altos estándares de seguridad. Descubre cómo podemos ayudarte a estar un paso adelante frente a las amenazas.",
+};
+
+const tituloVideos = {
+    titulo: "LO QUE DICEN NUESTROS CLIENTES",
+    video1: "https://www.youtube.com/embed/_JILDR5rKWQ?si=vcGQe0nLPSH-0kUH",
+    video2: "https://www.youtube.com/embed/-V2WZ7_sr2w?si=EC1KWCEiPj1VizCt",
+};
+
+const tituloVideos2 = {
+    titulo: "RECOMENDACIONES DE EXPERTOS ",
+    video1: "https://www.youtube.com/embed/W7iKRPkggI8?si=LxunUSvuvbu58JFo",
+    video2: "https://www.youtube.com/embed/2EjSDg2smzE?si=RJV4xgN3TF71TKxS",
+};
+
+const infoPoliticas = {
+    titulo: "Linea Ética",
+    descripcion:
+        "En Safety In Deep, la ética no es solo una norma, sino parte esencial de nuestra cultura y de cada decisión que tomamos. Como empresa especializada en ciberseguridad, entendemos que nuestros clientes confían en nosotros para proteger lo más valioso: su información, su reputación y su continuidad operativa.",
+};
+
+const infoCuentanosTuExp = {
+    titulo: "Cuéntanos tu Experiencia...",
+};
+---
+
+<Layout tituloPagina="Contactanos | SafeID">
+    <Main
+        tituloMain={informacionHero.tituloMain}
+        imagen={informacionHero.imagen}
+        tituloHero={informacionHero.tituloHero}
+        infoHero={informacionHero.infoHero}
+    />
+    <section class="trabajemosJuntos">
+        <div class="textoTrabajemos">
+            <h3 class="tituloTrabajemos">
+                TRABAJEMOS<br /><span class="resaltarJuntos">JUNTOS</span>
+            </h3>
+            <p>
+                La seguridad digital no es un lujo, es una necesidad. En Safety
+                In Deep nos aliamos contigo para proteger lo que más importa: tu
+                información, tus procesos y tu reputación. Confía en nosotros
+                para llevar tu ciberseguridad al siguiente nivel. ¿Listo para
+                comenzar?
+            </p>
+        </div>
+        <TrabajemosJuntos />
+    </section>
+    <SectionVideos
+        titulo={tituloVideos2.titulo}
+        video1={tituloVideos2.video1}
+        video2={tituloVideos2.video2}
+    />
+    <SectionAliados titulo="NUESTROS ALIADOS" />
+    <SectionVideos
+        titulo={tituloVideos.titulo}
+        video1={tituloVideos.video1}
+        video2={tituloVideos.video2}
+    />
+
+    <div id="politicas">
+        <Cardpoliticas
+            titulo={infoPoliticas.titulo}
+            descripcion={infoPoliticas.descripcion}
+        />
+    </div>
+    <FormsCuentanosExp titulo={infoCuentanosTuExp.titulo} />
+</Layout>
+
+<style>
+    body {
+        width: 100%;
+        height: 100%;
+        font-family: "Ubuntu";
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        padding: 0px;
+        margin: 0px;
+    }
+    .misionVision {
+        display: flex;
+        margin: 0px 40px;
+    }
+
+    .textoTrabajemos {
+        max-width: 600px;
+        padding: 20px 60px;
+        margin-left: 50px;
+    }
+
+    .tituloTrabajemos {
+        font-size: 50px;
+        margin: 0;
+        line-height: 60px;
+    }
+
+    .resaltarJuntos {
+        font-size: 90px;
+    }
+
+    .textoTrabajemos p {
+        max-width: 400px;
+        font-size: 20px;
+    }
+
+    .trabajemosJuntos {
+        background-color: #002c41;
+        background-image: url(src/content/Otros/textura_Mesa de trabajo 1.svg);
+        color: white;
+        display: flex;
+        flex-wrap: wrap; /* NO permite que se pase a la siguiente línea */
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+        width: 100vw; /* Para que ocupe todo el ancho de la ventana */
+        box-sizing: border-box;
+    }
+</style>

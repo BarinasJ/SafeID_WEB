@@ -1,0 +1,560 @@
+---
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+import Main from "../components/Main.astro";
+import CardServicios from "../components/CardServicios.astro";
+import CardIngeniero from "../components/CardIngNosotros.astro";
+import CardCliente from "../components/CardCliente.astro";
+import { imageConfig } from "astro:assets";
+import TrabajemosJuntos from "../components/trabajemosJuntos.astro";
+import CardMisionVision from "../components/Mision&Vision.astro";
+import MisionVision from "../components/Mision&Vision.astro";
+import Candado from "../components/Candado.astro";
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
+//FOOOOOOOOOOOOOOOOOOOOOOOORRRRRMULARIOOOOOOOOOOOO - TRABAJEMOS JUNTOS
+
+const trabajemosJuntosInfo = {
+    titulo: "Trabajemos Juntos",
+    descripcion:
+        "La seguridad digital no es un lujo, es una necesidad. En Safety In Deep nos aliamos contigo para proteger lo que más importa: tu información, tus procesos y tu reputación. Confía en nosotros para llevar tu ciberseguridad al siguiente nivel.¿Listo para comenzar?",
+};
+
+// SERVICIOOOOOOOOOOOOOOOOOOOOOS
+
+const servicioSeguridadNube = {
+    imagen: "src/content/Otros/Mesa de trabajo 1.svg",
+    titulo: "Seguridad en la Nube",
+    descripcion:
+        "En Safety In Deep protegemos tus entornos en la nube frente a accesos no autorizados, pérdida de datos y ciberataques. ",
+};
+
+const servicioCompNube = {
+    imagen: "src/content/Otros/Mesa de trabajo 2.svg",
+    titulo: "Compliance en la Nube",
+    descripcion:
+        "Aseguramos que tu infraestructura en la nube cumpla con normativas y estándares internacionales.  ",
+};
+
+const servicioSegMobil = {
+    imagen: "src/content/Otros/Mesa de trabajo 3.svg",
+    titulo: "Seguridad para moviles",
+    descripcion:
+        "Protegemos smartphones y tablets frente a amenazas como malware, robo de datos o accesos no autorizados. ",
+};
+
+const informacionHero = {
+    tituloMain: "SU TRANQUILIAD, NUESTRA PRIORIDAD",
+    imagen: "src/content/ImagenesSafeID/imagenes ejecutivos/smiling-man-taking-selfie-with-phone.jpg",
+    tituloHero: "Nuestros Servicios",
+    infoHero:
+        "En Safety In Deep, protegemos tu infraestructura digital de forma integral, desde la nube hasta los dispositivos móviles, combinando tecnología avanzada, experiencia y un enfoque preventivo. Nuestro objetivo es simple: blindar tu información, garantizar la continuidad de tu operación y ayudarte a cumplir con los más altos estándares de seguridad. Descubre cómo podemos ayudarte a estar un paso adelante frente a las amenazas.",
+};
+
+// INGENIEROOOOOOOOOOOOOOOOOOOOOOOS
+
+const ingSandra = {
+    imagen: "src/content/ImagenesSafeID/imagenes ejecutivos/imagenMiniaturaSandra.png",
+    nombre: "SANDRA SUÁREZ",
+    puesto: "GERENTE GENERAL",
+    aDondeLleva: "/nosotros#ingeSandra",
+};
+
+const ingDaniel = {
+    imagen: "src/content/ImagenesSafeID/imagenes ejecutivos/imagenminiaturaDaniel.png",
+    nombre: "DANIEL SUÁREZ",
+    puesto: "DIRECTOR COMERCIAL",
+};
+
+const ingJefferson = {
+    imagen: "src/content/ImagenesSafeID/imagenes ejecutivos/imagenJeffersonMini.png",
+    nombre: "JEFFERSON ROMERO",
+    puesto: "DIRECTOR DE INGNIERÍA",
+};
+
+const ingDavid = {
+    imagen: "src/content/ImagenesSafeID/imagenes ejecutivos/imagenMiniaturaDavid.png",
+    nombre: "DAVID GÓMEZ",
+    puesto: "DIRECTOR DE PROYECTOS",
+};
+
+const ingSebastian = {
+    imagen: "src/content/ImagenesSafeID/imagenes ejecutivos/imagenMiniaturaSebastian.png",
+    nombre: "SEBASTIÁN CÁRDENAS",
+    puesto: "ACOUNT MANAGER",
+};
+
+const ingSantiago = {
+    imagen: "src/content/ImagenesSafeID/imagenes ejecutivos/imagenMiniaturaSantiago.png",
+    nombre: "SANTIAGO OCHOA",
+    puesto: "LÍDER DE SOPORTE",
+};
+
+const clienteAndes = {
+    imagen: "src/content/Otros/LOGOS CLIENTES/VECTORIZADO_Mesa de trabajoAndes.png",
+    nombreCliente: "Universidad de los Andes",
+    comentario: "",
+};
+
+const clientEjercito = {
+    imagen: "src/content/Otros/LOGOS CLIENTES/ejercito-nacional-de-colombia-seeklogo.png",
+    nombreCliente: "Ejercito Nacional",
+    comentario: "",
+};
+
+const clientAnla = {
+    imagen: "src/content/Otros/LOGOS CLIENTES/VECTORIZADO_Mesa de trabajoAnla.png",
+    nombreCliente: "ANLA",
+    comentario: "",
+};
+
+const clientAUNAP = {
+    imagen: "src/content/Otros/LOGOS CLIENTES/VECTORIZADO_Mesa de trabajoAunap.png",
+    nombreCliente: "AUNAP",
+    comentario: "",
+};
+
+const clientAval = {
+    imagen: "src/content/Otros/LOGOS CLIENTES/VECTORIZADO_Mesa de trabajoAVAL.png",
+    nombreCliente: "Grupo AVAL",
+    comentario: "",
+};
+
+const clientBancoldex = {
+    imagen: "src/content/Otros/LOGOS CLIENTES/VECTORIZADO_Mesa de trabajoBancoldex.png",
+    nombreCliente: "Bancoldex",
+    comentario: "",
+};
+
+const clientCovinoc = {
+    imagen: "src/content/Otros/LOGOS CLIENTES/VECTORIZADO_Mesa de trabajoConvinoc.png",
+    nombreCliente: "Covinoc",
+    comentario: "",
+};
+
+const clientCredibanco = {
+    imagen: "src/content/Otros/LOGOS CLIENTES/VECTORIZADO_Mesa de trabajoCredibanco.png",
+    nombreCliente: "CredibanCO",
+    comentario: "",
+};
+
+const clientDavivienda = {
+    imagen: "src/content/Otros/LOGOS CLIENTES/VECTORIZADO_Mesa de trabajoDavivienda.png",
+    nombreCliente: "Davivienda",
+    comentario: "",
+};
+
+const clientDian = {
+    imagen: "src/content/Otros/LOGOS CLIENTES/VECTORIZADO_Mesa de trabajoDIAN.png",
+    nombreCliente: "DIAN",
+    comentario: "",
+};
+const clientMonoquera = {
+    imagen: "src/content/Otros/LOGOS CLIENTES/VECTORIZADO_Mesa de trabajoMonokera.png",
+    nombreCliente: "Monokera",
+    comentario: "",
+};
+
+const clientMigracion = {
+    imagen: "src/content/Otros/LOGOS CLIENTES/VECTORIZADO_Mesa de trabajoMigracion.png",
+    nombreCliente: "Migración Colombia",
+    comentario: "",
+};
+
+const clientBolivar = {
+    imagen: "src/content/Otros/LOGOS CLIENTES/VECTORIZADO-SegurosBolivar.png",
+    nombreCliente: "Seguros Bolivar",
+    comentario: "",
+};
+
+const mision = {
+    titulo: "Mision",
+    descripcion:
+        "SafeID se enfoca en brindar acompañamiento y asesoría a todos sus clientes en la identificación de los riesgos de Seguridad de la Información, para ayudarlos a determinar y soportar las mejores soluciones a nivel de procesos e infraestructura y darles la tranquilidad de contar con el respaldo de un equipo con experiencia y conocimiento, garantizando la mejor calidad en el servicio",
+};
+
+const vision = {
+    titulo: "Vision",
+    descripcion:
+        "Ser la compañía de Asesoría en Seguridad de la Información más reconocida en acompañar a sus clientes en el proceso de transformación digital, mediante diseños e soluciones flexibles y seguras, siempre bajo el estándar que nos caracteriza de servicio fundado en conocimiento, experiencia y soluciones innovadoras del mercado.",
+};
+
+const infotrabajemosJuntos = {};
+---
+
+<!-- (servicios a -> Servicios) clientes aliados -->
+<Layout tituloPagina="Home | SafeID">
+    <Main
+        tituloMain={informacionHero.tituloMain}
+        imagen={informacionHero.imagen}
+        tituloHero={informacionHero.tituloHero}
+        infoHero={informacionHero.infoHero}
+    />
+    <!-- <div class="misionVision">
+        <MisionVision titulo={mision.titulo} descripcion={mision.descripcion} />
+        <MisionVision titulo={vision.titulo} descripcion={vision.descripcion} />
+    </div> -->
+
+    <section class="sectionNosotros">
+        <CardIngeniero
+            imagen={ingSandra.imagen}
+            nombre={ingSandra.nombre}
+            puesto={ingSandra.puesto}
+            aDondeLleva="/nosotros#ingeSandra"
+        />
+        <CardIngeniero
+            imagen={ingDaniel.imagen}
+            nombre={ingDaniel.nombre}
+            puesto={ingDaniel.puesto}
+            aDondeLleva="/nosotros#ingeDaniel"
+        />
+        <CardIngeniero
+            imagen={ingJefferson.imagen}
+            nombre={ingJefferson.nombre}
+            puesto={ingJefferson.puesto}
+            aDondeLleva="/nosotros#ingeJefferson"
+        />
+        <CardIngeniero
+            imagen={ingDavid.imagen}
+            nombre={ingDavid.nombre}
+            puesto={ingDavid.puesto}
+            aDondeLleva="/nosotros#ingeDavid"
+        />
+        <CardIngeniero
+            imagen={ingSebastian.imagen}
+            nombre={ingSebastian.nombre}
+            puesto={ingSebastian.puesto}
+            aDondeLleva="/nosotros#ingeSebastian"
+        />
+        <CardIngeniero
+            imagen={ingSantiago.imagen}
+            nombre={ingSantiago.nombre}
+            puesto={ingSantiago.puesto}
+            aDondeLleva="/nosotros#ingeSantiago"
+        />
+    </section>
+
+    <h2 class="queDNC">
+        <br /><span class="queDNCgrande">NUESTROS CLIENTES...</span>
+    </h2>
+    <section class="sectionQDNC">
+        <div class="marquee__inner">
+            <div class="marquee__gruop">
+                <span class="span">
+                    <CardCliente
+                        imagen={clienteAndes.imagen}
+                        nombreCliente={clienteAndes.nombreCliente}
+                        comentario={clienteAndes.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientEjercito.imagen}
+                        nombreCliente={clientEjercito.nombreCliente}
+                        comentario={clientEjercito.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientAnla.imagen}
+                        nombreCliente={clientAnla.nombreCliente}
+                        comentario={clientAnla.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientAUNAP.imagen}
+                        nombreCliente={clientAUNAP.nombreCliente}
+                        comentario={clientAUNAP.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientAval.imagen}
+                        nombreCliente={clientAval.nombreCliente}
+                        comentario={clientAval.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientBancoldex.imagen}
+                        nombreCliente={clientBancoldex.nombreCliente}
+                        comentario={clientBancoldex.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientCovinoc.imagen}
+                        nombreCliente={clientCovinoc.nombreCliente}
+                        comentario={clientCovinoc.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientCredibanco.imagen}
+                        nombreCliente={clientCredibanco.nombreCliente}
+                        comentario={clientCredibanco.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientDavivienda.imagen}
+                        nombreCliente={clientDavivienda.nombreCliente}
+                        comentario={clientDavivienda.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientDian.imagen}
+                        nombreCliente={clientDian.nombreCliente}
+                        comentario={clientDian.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientMonoquera.imagen}
+                        nombreCliente={clientMonoquera.nombreCliente}
+                        comentario={clientMonoquera.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientMigracion.imagen}
+                        nombreCliente={clientMigracion.nombreCliente}
+                        comentario={clientMigracion.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientBolivar.imagen}
+                        nombreCliente={clientBolivar.nombreCliente}
+                        comentario={clientBolivar.comentario}
+                    />
+                </span>
+            </div>
+
+            <div class="marquee__gruop">
+                <span class="span">
+                    <CardCliente
+                        imagen={clienteAndes.imagen}
+                        nombreCliente={clienteAndes.nombreCliente}
+                        comentario={clienteAndes.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientEjercito.imagen}
+                        nombreCliente={clientEjercito.nombreCliente}
+                        comentario={clientEjercito.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientAnla.imagen}
+                        nombreCliente={clientAnla.nombreCliente}
+                        comentario={clientAnla.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientAUNAP.imagen}
+                        nombreCliente={clientAUNAP.nombreCliente}
+                        comentario={clientAUNAP.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientAval.imagen}
+                        nombreCliente={clientAval.nombreCliente}
+                        comentario={clientAval.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientBancoldex.imagen}
+                        nombreCliente={clientBancoldex.nombreCliente}
+                        comentario={clientBancoldex.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientCovinoc.imagen}
+                        nombreCliente={clientCovinoc.nombreCliente}
+                        comentario={clientCovinoc.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientCredibanco.imagen}
+                        nombreCliente={clientCredibanco.nombreCliente}
+                        comentario={clientCredibanco.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientDavivienda.imagen}
+                        nombreCliente={clientDavivienda.nombreCliente}
+                        comentario={clientDavivienda.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientDian.imagen}
+                        nombreCliente={clientDian.nombreCliente}
+                        comentario={clientDian.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientMonoquera.imagen}
+                        nombreCliente={clientMonoquera.nombreCliente}
+                        comentario={clientMonoquera.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientMigracion.imagen}
+                        nombreCliente={clientMigracion.nombreCliente}
+                        comentario={clientMigracion.comentario}
+                    />
+                </span>
+                <span class="span">
+                    <CardCliente
+                        imagen={clientBolivar.imagen}
+                        nombreCliente={clientBolivar.nombreCliente}
+                        comentario={clientBolivar.comentario}
+                    />
+                </span>
+            </div>
+        </div>
+    </section>
+    <h2 class="queDNC"></h2>
+    <section class="trabajemosJuntos">
+        <div class="textoTrabajemos">
+            <h3 class="tituloTrabajemos">
+                TRABAJEMOS<br /><span class="resaltarJuntos">JUNTOS</span>
+            </h3>
+            <p>
+                La seguridad digital no es un lujo, es una necesidad. En Safety
+                In Deep nos aliamos contigo para proteger lo que más importa: tu
+                información, tus procesos y tu reputación. Confía en nosotros
+                para llevar tu ciberseguridad al siguiente nivel. ¿Listo para
+                comenzar?
+            </p>
+        </div>
+        <TrabajemosJuntos />
+    </section>
+</Layout>
+
+<style>
+    .textoTrabajemos {
+        max-width: 600px;
+        padding: 20px 60px;
+        margin-left: 50px;
+    }
+
+    .tituloTrabajemos {
+        font-size: 50px;
+        margin: 0;
+        line-height: 60px;
+    }
+
+    .resaltarJuntos {
+        font-size: 90px;
+    }
+
+    .textoTrabajemos p {
+        max-width: 400px;
+        font-size: 20px;
+    }
+
+    .trabajemosJuntos {
+        background-color: #002c41;
+        background-image: url(src/content/Otros/textura_Mesa de trabajo 1.svg);
+        color: white;
+        display: flex;
+        flex-wrap: wrap; /* NO permite que se pase a la siguiente línea */
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+        width: 100vw; /* Para que ocupe todo el ancho de la ventana */
+        box-sizing: border-box;
+    }
+
+    .sectionServicios {
+        display: grid;
+        grid-template-columns: 24% 24% 24% 24%;
+        column-gap: 20px;
+        row-gap: 20px;
+        justify-content: end;
+        margin: 0 30px;
+    }
+
+    .sectionNosotros {
+        background-color: #ffffff;
+        display: flex;
+        margin: 20px 40px;
+    }
+
+    .sectionQDNC {
+        background-color: #e5a82e;
+        display: block;
+        flex-direction: row;
+        padding: 30px 0px;
+    }
+
+    .queDNC {
+        margin-left: 80px;
+        color: #002c41;
+        font-size: 3.8em;
+        margin-bottom: 20px;
+    }
+    .queDNCgrande {
+        color: #002c41;
+        font-size: 1.4em;
+    }
+
+    .misionVision {
+        display: flex;
+        margin: 0px 40px;
+    }
+
+    .span {
+        display: inline-block;
+    }
+
+    /*          DINAMISMO CLIENTES PASARELAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA         */
+    .marquee__inner {
+        display: flex;
+        width: max-content;
+        animation: marquee 20s linear infinite;
+    }
+
+    .marquee__group {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+    }
+
+    .marquee__group span {
+        margin: 0 1.5rem;
+        white-space: nowrap;
+        background: #000000;
+        color: white;
+        padding: 4px 16px 4px 12px;
+        border-radius: 6px;
+        font-size: 1.2rem;
+    }
+
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+</style>

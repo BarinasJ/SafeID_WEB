@@ -1,0 +1,131 @@
+---
+interface Props {
+    titulo: string;
+    descripcion1: string;
+    descripcion2: string;
+}
+
+const { titulo, descripcion1, descripcion2 } = Astro.props;
+---
+
+<div>
+    <section class="safeid-section">
+        <div class="content-wrapper">
+            <div class="lineasAmarillas">
+                <h1>{titulo}</h1>
+                <div class="description-box">
+                    <p class="justificar">{descripcion1}</p>
+                    <p class="justificar">{descripcion2}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+    .safeid-section {
+        position: relative;
+        height: 500px; /* Adjust height as needed to match the image */
+        display: flex;
+        align-items: center; /* Center content vertically */
+        /* Combine background image and a linear-gradient overlay */
+        /* The tint appears lighter and slightly desaturated in the new image */
+        background: linear-gradient(
+                rgba(100, 100, 100, 0.2),
+                rgba(100, 100, 100, 0.2)
+            ),
+            url("/src/content/Otros/FondoNuestrosIngenieros.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow: hidden; /* Important if the lines extend slightly outside */
+        padding: 30px; /* Remove padding from section itself, content-wrapper will handle it */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%; /* Ensure content wrapper takes full width for padding */
+        margin-bottom: 50px;
+    }
+
+    /* Yellow corner lines */
+    .lineasAmarillas::before,
+    .lineasAmarillas::after {
+        content: "";
+        position: absolute;
+        width: 70px; /* Adjust line length */
+        height: 70px; /* Adjust line length */
+        border-color: #ffd700; /* Yellow color */
+        border-style: solid;
+        z-index: 3; /* Lines should be on top of everything */
+    }
+
+    /* Top-left corner */
+    .lineasAmarillas::before {
+        top: 0;
+        left: 0;
+        border-width: 5px 0 0 5px; /* Top and left borders only */
+    }
+
+    /* Bottom-right corner */
+    .lineasAmarillas::after {
+        bottom: 0;
+        right: 0;
+        border-width: 0 5px 5px 0; /* Right and bottom borders only */
+    }
+
+    .content-wrapper {
+        display: flex;
+        position: relative;
+        z-index: 2; /* Content above the background and overlay */
+        padding: 20px 40px; /* Adjust padding for left alignment and spacing */
+        max-width: 800px; /* Limit content width for better readability */
+        margin-right: 50px; /* Push content to the left */
+
+        justify-self: center;
+    }
+
+    .safeid-section h1 {
+        font-size: 3.8em; /* Adjust font size for the title */
+        font-weight: bold; /* Make title bold */
+        margin-bottom: 20px;
+        color: #1a2f4c; /* Dark blue color for the title */
+        font-family: "Arial", sans-serif; /* Example font */
+        text-shadow: none; /* Remove text shadow as it's not apparent in the new image */
+        text-align: center;
+    }
+
+    .description-box {
+        padding: 20px; /* Padding inside the box */
+        background-color: rgba(
+            255,
+            255,
+            255,
+            0.329
+        ); /* Very subtle white transparent background for the box */
+        /* You might adjust the background-color or remove it if the border alone is enough */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for depth */
+        border-radius: 5px; /* Slightly rounded corners if desired */
+        color: #1a2f4c;
+    }
+
+    .safeid-section p {
+        font-size: 1.1em; /* Adjust font size for descriptions */
+        line-height: 1.6;
+        margin-bottom: 15px; /* Spacing between paragraphs */
+        color: #1a2f4c; /* Darker blue/grey for description text */
+        font-family: "Arial", sans-serif; /* Example font */
+        text-shadow: none; /* Remove text shadow */
+    }
+
+    .safeid-section p:last-child {
+        margin-bottom: 0; /* Remove bottom margin from the last paragraph */
+    }
+
+    h1 {
+        margin: 0px;
+    }
+
+    p {
+        text-align: justify;
+    }
+</style>

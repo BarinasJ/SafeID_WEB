@@ -1,0 +1,105 @@
+---
+interface Props {
+    titulo?: string;
+}
+
+const { titulo } = Astro.props;
+---
+
+<div class="contenedor-animacion-candado">
+    <img
+        class="candado-base"
+        src="src/content/ImagenesSafeID/CandadoGrande/candado .png"
+        alt="CandadoParte1"
+    />
+    <img
+        class="orbita orbita-azul rotar-lento"
+        src="src/content/ImagenesSafeID/CandadoGrande/orbita azul.png"
+        alt="Órbita azul"
+    />
+    <img
+        class="orbita orbita-circular rotar-rapido"
+        src="src/content/ImagenesSafeID/EquipoCompleto&Candados/Circulo svg.svg"
+        alt="Órbita circular"
+    />
+</div>
+
+<style>
+    .contenedor-animacion-candado {
+        position: relative;
+        /* Define el tamaño del contenedor base. Ajusta estos valores si tu imagen de candado es más grande o más pequeña. */
+        width: 300px; /* Tamaño ajustado para que las órbitas se vean bien alrededor */
+        height: 350px; /* Podría ser un poco más alto si el candado lo requiere */
+        margin: auto; /* Centra el contenedor horizontalmente en su padre */
+
+        /* Las propiedades 'bottom' y 'left' que tenías hacen que el contenedor se posicione
+           respecto al body o al elemento posicionado más cercano. Si quieres que se quede
+           en un lugar específico de la página, déjalas. Si quieres que se ajuste al flujo, quítalas.
+           Las he comentado para un comportamiento más "estándar" dentro de un flujo de contenido. */
+        position: absolute;
+        bottom: 40px;
+        left: 80px;
+
+        /* Si quieres que el candado sea lo que define el tamaño del contenedor,
+           puedes usar 'fit-content' o similar y que el tamaño de las imágenes internas
+           sea lo que lo expanda. Para este caso, un tamaño fijo y centrado funciona bien. */
+    }
+
+    .candado-base,
+    .orbita {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        /* Centra el elemento exactamente en el medio de su contenedor. */
+        transform: translate(-50%, -50%);
+    }
+
+    .candado-base {
+        width: 20%; /* El candado base ocupa el 100% del ancho del contenedor */
+        height: auto; /* Mantiene la proporción */
+        z-index: 1; /* Asegura que el candado esté encima de las órbitas si es necesario */
+    }
+
+    .orbita {
+        /* Ajusta el ancho de las órbitas para que sean proporcionales al candado base.
+           Si el candado base es '100%' de su contenedor, las órbitas pueden ser 'X%' de ese mismo contenedor. */
+        width: 110%; /* Por ejemplo, 110% del ancho del contenedor para que sean un poco más grandes que el candado */
+        height: auto;
+        object-fit: contain; /* Asegura que la órbita se ajuste dentro del espacio sin cortarse */
+        z-index: 0; /* Las órbitas deben estar por debajo del candado */
+        transform-origin: center center; /* Asegura que la rotación se haga desde el centro del elemento */
+    }
+
+    .orbita-azul {
+        /* Puedes ajustar el tamaño individualmente si una órbita es más grande/pequeña */
+        width: 120%; /* Por ejemplo, esta órbita un poco más grande */
+    }
+
+    .orbita-circular {
+        width: 80%; /* Y esta órbita más pequeña */
+    }
+
+    /* Clases para las animaciones de rotación */
+    .rotar-lento {
+        animation: girar 8s linear infinite; /* Duración más lenta */
+    }
+
+    .rotar-rapido {
+        animation: girar 5s linear infinite; /* Duración más rápida */
+    }
+
+    @keyframes girar {
+        from {
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+        to {
+            transform: translate(-50%, -50%) rotate(360deg);
+        }
+    }
+
+    @media (max-width: 768px) {
+    .contenedor-animacion-candado {
+        display: none;
+    }
+}
+</style>
