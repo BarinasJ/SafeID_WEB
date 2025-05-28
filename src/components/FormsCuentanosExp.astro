@@ -9,21 +9,63 @@ const { titulo } = Astro.props;
 <section class="body">
     <div class="form-wrapper">
         <h2>{titulo}</h2>
-        <form name="cuentanosTuExp" method="POST" data-netlify="true">
+
+        <form
+            id="miFormulario"
+            action="https://formsubmit.co/pqrs@safeid-sas.com"
+            method="POST"
+        >
             <div class="input-group">
-                <label for="infoInput"></label>
                 <input
                     type="text"
                     id="infoInput"
                     name="info"
                     placeholder="Escribe aquí tu email, teléfono o pregunta..."
                     required
+                    maxlength="300"
+                    pattern="^[^<>%$]*$"
+                    title="Evita símbolos como < > % $"
                 />
             </div>
+
+            <!-- 🔒 Google reCAPTCHA -->
+            <div class="g-recaptcha" data-sitekey="TU_SITE_KEY_AQUI"></div>
+
             <button type="submit" class="submit-button">Enviar</button>
         </form>
     </div>
 </section>
+
+<!-- ✅ Script reCAPTCHA -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<!-- ✅ Script simple de validación -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("miFormulario");
+
+        form.addEventListener("submit", function (e) {
+            const captcha = grecaptcha.getResponse();
+
+            if (!captcha) {
+                alert("Por favor completa el reCAPTCHA.");
+                e.preventDefault();
+                return;
+            }
+
+            const lastSent = localStorage.getItem("lastSentTime");
+            const now = Date.now();
+
+            if (lastSent && now - lastSent < 60000) {
+                alert("Espera un momento antes de enviar nuevamente.");
+                e.preventDefault();
+                return;
+            }
+
+            localStorage.setItem("lastSentTime", now);
+        });
+    });
+</script>
 
 <style>
     :root {
