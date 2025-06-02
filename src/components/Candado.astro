@@ -9,17 +9,17 @@ const { titulo } = Astro.props;
 <div class="contenedor-animacion-candado">
     <img
         class="candado-base"
-        src="src/content/ImagenesSafeID/CandadoGrande/candado .png"
+        src="/imagenes/ImagenesSafeID/CandadoGrande/candado .png"
         alt="CandadoParte1"
     />
     <img
         class="orbita orbita-azul rotar-lento"
-        src="src/content/ImagenesSafeID/CandadoGrande/orbita azul.png"
+        src="/imagenes/ImagenesSafeID/CandadoGrande/orbita azul.png"
         alt="Órbita azul"
     />
     <img
         class="orbita orbita-circular rotar-rapido"
-        src="src/content/ImagenesSafeID/EquipoCompleto&Candados/Circulo svg.svg"
+        src="/imagenes/ImagenesSafeID/EquipoCompleto&Candados/Circulo svg.svg"
         alt="Órbita circular"
     />
 </div>
@@ -98,8 +98,8 @@ const { titulo } = Astro.props;
     }
 
     @media (max-width: 768px) {
-    .contenedor-animacion-candado {
-        display: none;
+        .contenedor-animacion-candado {
+            display: none;
+        }
     }
-}
 </style>

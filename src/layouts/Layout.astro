@@ -59,7 +59,7 @@ const { tituloPagina = "SafeID" } = Astro.props;
 				<div class="iconos">
 					<!-- <img
 						class="imgIconos"
-						src="src/content/ImagenesSafeID/logos/LogoSafeIDblanco.png"
+						src="/imagenes/ImagenesSafeID/logos/LogoSafeIDblanco.png"
 						alt="SafeID-000iconWhite"
 					/> -->
 					<div class="informacionFooter">
@@ -77,7 +77,7 @@ const { tituloPagina = "SafeID" } = Astro.props;
 					<ul>
 						<li class="logo">
 							<img
-								src="src/content/ImagenesSafeID/imagenes ejecutivos/logotipo-de-instagram.png"
+								src="/imagenes//ImagenesSafeID/imagenes ejecutivos/logotipo-de-instagram.png"
 								alt="instagram"
 								class="icono"
 							/><h4>
@@ -91,7 +91,7 @@ const { tituloPagina = "SafeID" } = Astro.props;
 						</li>
 						<li class="logo">
 							<img
-								src="src/content/ImagenesSafeID/imagenes ejecutivos/youtube.png"
+								src="/imagenes/ImagenesSafeID/imagenes ejecutivos/youtube.png"
 								alt="youtube"
 								class="icono youtube"
 							/><h4>
@@ -105,7 +105,7 @@ const { tituloPagina = "SafeID" } = Astro.props;
 						</li>
 						<li class="logo">
 							<img
-								src="src/content/ImagenesSafeID/imagenes ejecutivos/linkedin.png"
+								src="/imagenes/ImagenesSafeID/imagenes ejecutivos/linkedin.png"
 								alt="linkedin"
 								class="icono"
 							/><h4>
@@ -153,7 +153,7 @@ const { tituloPagina = "SafeID" } = Astro.props;
 			</div>
 			<img
 				class="logoFooter"
-				src="src/content/Otros/logoFooter.svg"
+				src="/imagenes/Otros/logoFooter.svg"
 				alt="logofooter"
 			/>
 		</footer>
@@ -313,6 +313,7 @@ const { tituloPagina = "SafeID" } = Astro.props;
 		height: 100%; /* Mantiene la proporción */
 		/* Ajusta la opacidad para un efecto de marca de agua sutil */
 		z-index: 0; /* Asegura que esté por detrás del contenido del footer */
+		pointer-events: none;
 	}
 
 	.linkRedess {
