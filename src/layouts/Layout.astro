@@ -11,20 +11,18 @@ const { tituloPagina = "SafeID" } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<!-- <meta
+		<meta
 			http-equiv="Content-Security-Policy"
 			content="
-  default-src 'self';
-  script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/;
-  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-  font-src 'self' https://fonts.gstatic.com;
+  				default-src 'self';
+  				script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/;
+  				style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+ 				font-src 'self' https://fonts.gstatic.com;
+				connect-src 'self';
+				form-action https://formsubmit.co;"
+		/>
 
-  connect-src 'self';
-  form-action https://formsubmit.co;
-"
-		/> -->
-
-		<link rel="icon" href="../../public/ICON_SafeID.svg" />
+		<link rel="icon" href="/imagenes/ICON_SafeID.svg" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -36,7 +34,11 @@ const { tituloPagina = "SafeID" } = Astro.props;
 	</head>
 	<body>
 		<nav>
-			<img class="logoNav" src="../../public/LogoSafeAzul.png" alt="" />
+			<img
+				class="logoNav"
+				src="/public/imagenes/LogoSafeAzul.png"
+				alt=""
+			/>
 			<ul>
 				<li><a class="botonNav" href="/">Inicio</a></li>
 				<li>

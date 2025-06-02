@@ -28,7 +28,6 @@ const { titulo } = Astro.props;
                 />
             </div>
 
-            <!-- 🔒 Google reCAPTCHA -->
             <div class="g-recaptcha" data-sitekey="TU_SITE_KEY_AQUI"></div>
 
             <button type="submit" class="submit-button">Enviar</button>
@@ -36,38 +35,48 @@ const { titulo } = Astro.props;
     </div>
 </section>
 
-<!-- ✅ Script reCAPTCHA -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-<!-- ✅ Script simple de validación -->
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-        const form = document.getElementById("miFormulario");
+        // Asegúrate de que el elemento es de tipo HTMLFormElement
+        const form = document.getElementById("miFormulario") as HTMLFormElement | null;
 
-        form.addEventListener("submit", function (e) {
-            const captcha = grecaptcha.getResponse();
+        // VERIFICACIÓN: Si el formulario existe, entonces adjunta el event listener
+        if (form) {
+            form.addEventListener("submit", function (e: Event) { // Añadimos e: Event para tipar el parámetro del evento
+                const captcha = grecaptcha.getResponse();
 
-            if (!captcha) {
-                alert("Por favor completa el reCAPTCHA.");
-                e.preventDefault();
-                return;
-            }
+                if (!captcha) {
+                    alert("Por favor completa el reCAPTCHA.");
+                    e.preventDefault(); // Previene el envío del formulario
+                    return; // Detiene la ejecución de la función
+                }
 
-            const lastSent = localStorage.getItem("lastSentTime");
-            const now = Date.now();
+                const lastSent = localStorage.getItem("lastSentTime");
+                const now = Date.now();
 
-            if (lastSent && now - lastSent < 60000) {
-                alert("Espera un momento antes de enviar nuevamente.");
-                e.preventDefault();
-                return;
-            }
+                // Convertir lastSent a número para la resta, si existe
+                if (lastSent && now - parseInt(lastSent) < 60000) {
+                    alert("Espera un momento antes de enviar nuevamente.");
+                    e.preventDefault(); // Previene el envío del formulario
+                    return; // Detiene la ejecución de la función
+                }
 
-            localStorage.setItem("lastSentTime", now);
-        });
+                // Si todo es válido, guarda el tiempo y permite el envío.
+                // Es importante guardar `now` como un string para localStorage.
+                localStorage.setItem("lastSentTime", now.toString());
+            });
+        } else {
+            // Opcional: Si el formulario no se encuentra, puedes registrar un error en la consola.
+            // Esto es útil para la depuración si el ID 'miFormulario' no es correcto o el HTML no se carga.
+            console.error("Error: El formulario con ID 'miFormulario' no fue encontrado en el DOM.");
+        }
     });
 </script>
 
 <style>
+    /* ... Tus estilos CSS aquí (sin cambios) ... */
     :root {
         --color-primary: #002c41d6; /* Azul oscuro */
         --color-secondary: #e4a92d; /* Amarillo-naranja */
@@ -181,57 +190,4 @@ const { titulo } = Astro.props;
     .input-group input[type="text"]:focus {
         border-color: var(--color-secondary); /* Borde secundario al enfocar */
         outline: none;
-        box-shadow: 0 0 0 4px rgba(228, 169, 45, 0.2); /* Sombra suave */
-    }
-
-    .input-group input[type="text"]::placeholder {
-        color: #a0a0a0;
-    }
-
-    .submit-button {
-        background-color: var(--color-primary); /* Botón azul oscuro */
-        color: var(--color-text-light);
-        padding: 14px 30px;
-        border: none;
-        border-radius: 8px;
-        font-size: 1.2em;
-        font-weight: 700;
-        cursor: pointer;
-        width: 100%;
-        transition:
-            background-color 0.3s ease,
-            transform 0.2s ease,
-            box-shadow 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0, 44, 65, 0.3); /* Sombra para el botón */
-    }
-
-    .submit-button:hover {
-        background-color: var(
-            --color-secondary
-        ); /* Cambia a amarillo-naranja al pasar el ratón */
-        transform: translateY(-2px); /* Pequeño efecto de levantamiento */
-        box-shadow: 0 6px 20px rgba(228, 169, 45, 0.4);
-    }
-
-    .submit-button:active {
-        transform: translateY(0);
-        box-shadow: 0 2px 10px rgba(0, 44, 65, 0.2);
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 600px) {
-        .form-wrapper {
-            padding: 30px 20px;
-            margin: 0 10px; /* Margen en pantallas pequeñas */
-        }
-
-        h2 {
-            font-size: 1.8em;
-        }
-
-        .submit-button {
-            font-size: 1.1em;
-            padding: 12px 25px;
-        }
-    }
-</style>
+        box-shadow: 0 0 0 4px rgba(2
