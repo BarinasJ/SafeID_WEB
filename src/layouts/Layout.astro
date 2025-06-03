@@ -14,12 +14,13 @@ const { tituloPagina = "SafeID" } = Astro.props;
 		<meta
 			http-equiv="Content-Security-Policy"
 			content="
-  				default-src 'self';
-  				script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/;
-  				style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
- 				font-src 'self' https://fonts.gstatic.com;
-				connect-src 'self';
-				form-action https://formsubmit.co;"
+                default-src 'self';
+                script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://www.recaptcha.net/;
+                style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+                font-src 'self' https://fonts.gstatic.com;
+                connect-src 'self';
+                frame-src 'self' https://www.google.com/recaptcha/ https://www.recaptcha.net/; /* Añadir frame-src para reCAPTCHA */
+                form-action https://formsubmit.co;"
 		/>
 
 		<link rel="icon" href="/imagenes/ICON_SafeID.svg" />
@@ -59,11 +60,6 @@ const { tituloPagina = "SafeID" } = Astro.props;
 		<footer>
 			<div class="parteUno">
 				<div class="iconos">
-					<!-- <img
-						class="imgIconos"
-						src="/imagenes/ImagenesSafeID/logos/LogoSafeIDblanco.png"
-						alt="SafeID-000iconWhite"
-					/> -->
 					<div class="informacionFooter">
 						<h3>Oficina</h3>
 						<h4 class="direccion">Cra 62 # 44-26</h4>
@@ -177,6 +173,7 @@ const { tituloPagina = "SafeID" } = Astro.props;
 </html>
 
 <style>
+	/* ... tus estilos CSS ... */
 	html,
 	body {
 		margin: 0;
@@ -514,8 +511,3 @@ const { tituloPagina = "SafeID" } = Astro.props;
 		}
 	}
 </style>
-
-<!-- #e4a92d  AMARILLO -->
-<!-- #002c41  AZUL -->
-<!-- #b47427 ARENA OSCURO-->
-<!-- #E3E3E3 GRIS-->

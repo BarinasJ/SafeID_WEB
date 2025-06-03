@@ -30,7 +30,7 @@ const { titulo = "Cuéntanos tu experiencia", siteKey } = Astro.props;
                     required
                     maxlength="300"
                     pattern="^[^<>%$]*$"
-                    title="Evita símbolos como <div > % $"
+                    title="Evita símbolos como < > % $ "
                 />
             </div>
 
@@ -45,9 +45,10 @@ const { titulo = "Cuéntanos tu experiencia", siteKey } = Astro.props;
 <script>
     // Script para validar el reCAPTCHA antes de enviar el formulario
     document.addEventListener("DOMContentLoaded", () => {
+        // Asegúrate de que este ID coincida con el ID del formulario en el HTML
         const form = document.getElementById(
-            "recaptchaForm",
-        ) as HTMLFormElement | null;
+            "miFormulario",
+        ) as HTMLFormElement | null; // <-- CORREGIDO: Usar "miFormulario"
 
         if (form) {
             form.addEventListener("submit", function (e: SubmitEvent) {
@@ -57,10 +58,10 @@ const { titulo = "Cuéntanos tu experiencia", siteKey } = Astro.props;
                     typeof grecaptcha.getResponse === "undefined"
                 ) {
                     console.error(
-                        "Error: La API de reCAPTCHA no está cargada correctamente.",
+                        "Error: La API de reCAPTCHA no está cargada correctamente o 'grecaptcha' no está disponible.",
                     );
                     alert(
-                        "Por favor, inténtalo de nuevo. Error al cargar reCAPTCHA.",
+                        "Por favor, inténtalo de nuevo. Error al cargar reCAPTCHA. Asegúrate de que JavaScript está habilitado y no hay bloqueadores de anuncios.",
                     );
                     e.preventDefault(); // Detiene el envío
                     return;
@@ -74,20 +75,35 @@ const { titulo = "Cuéntanos tu experiencia", siteKey } = Astro.props;
                         "Por favor, completa el reCAPTCHA para verificar que no eres un robot.",
                     );
                     e.preventDefault(); // Previene el envío del formulario
+                } else {
+                    // reCAPTCHA completado, verificar el tiempo de último envío
+                    const lastSent = localStorage.getItem("lastSentTime");
+                    const now = Date.now();
+
+                    // Convertir lastSent a número para la resta, si existe
+                    // 60000 ms = 1 minuto
+                    if (lastSent && now - parseInt(lastSent) < 60000) {
+                        alert(
+                            "Espera un momento antes de enviar nuevamente para evitar spam.",
+                        );
+                        e.preventDefault(); // Previene el envío del formulario
+                        return;
+                    }
+
+                    // Si todo es válido, guarda el tiempo y permite el envío.
+                    localStorage.setItem("lastSentTime", now.toString());
                 }
-                // Si response.length > 0, significa que el reCAPTCHA fue completado
-                // y el formulario se enviará normalmente (ya que no llamamos a e.preventDefault())
             });
         } else {
             console.error(
-                "Error: El formulario con ID 'recaptchaForm' no fue encontrado.",
+                "Error: El formulario con ID 'miFormulario' no fue encontrado en el DOM.", // <-- CORREGIDO: Usar "miFormulario"
             );
         }
     });
 </script>
 
 <style>
-    /* Tus estilos CSS aquí (sin cambios importantes, solo completado el box-shadow) */
+    /* Tus estilos CSS aquí, sin cambios, solo para completar el `box-shadow` si no estaba completo */
     :root {
         --color-primary: #002c41d6; /* Azul oscuro */
         --color-secondary: #e4a92d; /* Amarillo-naranja */
@@ -201,7 +217,7 @@ const { titulo = "Cuéntanos tu experiencia", siteKey } = Astro.props;
     .input-group input[type="text"]:focus {
         border-color: var(--color-secondary); /* Borde secundario al enfocar */
         outline: none;
-        box-shadow: 0 0 0 4px rgba(228, 169, 45, 0.5); /* Corregido el CSS cortado */
+        box-shadow: 0 0 0 4px rgba(228, 169, 45, 0.5);
     }
 
     .submit-button {
