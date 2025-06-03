@@ -19,6 +19,8 @@ import { defaultErrorMap } from "astro:schema";
 import FormsCuentanosExp from "../components/FormsCuentanosExp.astro";
 import SectionAliados from "../components/SectionAliados.astro";
 
+const miSiteKey = "6LcC_1MrAAAAAPRaee7R09a1wvSwntbCVkrM8ide";
+
 const informacionHero = {
     tituloMain: "SU TRANQUILIAD, NUESTRA PRIORIDAD",
     imagen: "/imagenes/ImagenesSafeID/CandadoGrande/Mesa de trabajo 5.png",
@@ -90,7 +92,7 @@ const infoCuentanosTuExp = {
             descripcion={infoPoliticas.descripcion}
         />
     </div>
-    <FormsCuentanosExp titulo={infoCuentanosTuExp.titulo} />
+    <FormsCuentanosExp titulo={infoCuentanosTuExp.titulo} siteKey={miSiteKey} />
 </Layout>
 
 <style>

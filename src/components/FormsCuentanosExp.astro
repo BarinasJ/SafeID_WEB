@@ -1,9 +1,15 @@
 ---
+// src/components/TuComponenteDeFormulario.astro
+
+// No importamos el layout aquí, ya que este es un componente de sección.
+// Asumimos que este componente será importado y usado DENTRO de una página o un layout.
+
 interface Props {
-    titulo: string;
+    titulo?: string;
+    siteKey: string;
 }
 
-const { titulo } = Astro.props;
+const { titulo = "Cuéntanos tu experiencia", siteKey } = Astro.props;
 ---
 
 <section class="body">
@@ -24,59 +30,64 @@ const { titulo } = Astro.props;
                     required
                     maxlength="300"
                     pattern="^[^<>%$]*$"
-                    title="Evita símbolos como < > % $"
+                    title="Evita símbolos como <div > % $"
                 />
             </div>
 
-            <div class="g-recaptcha" data-sitekey="TU_SITE_KEY_AQUI"></div>
+            <div class="g-recaptcha" data-sitekey={siteKey}></div>
+            <br />
 
             <button type="submit" class="submit-button">Enviar</button>
         </form>
     </div>
 </section>
 
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
 <script>
+    // Script para validar el reCAPTCHA antes de enviar el formulario
     document.addEventListener("DOMContentLoaded", () => {
-        // Asegúrate de que el elemento es de tipo HTMLFormElement
-        const form = document.getElementById("miFormulario") as HTMLFormElement | null;
+        const form = document.getElementById(
+            "recaptchaForm",
+        ) as HTMLFormElement | null;
 
-        // VERIFICACIÓN: Si el formulario existe, entonces adjunta el event listener
         if (form) {
-            form.addEventListener("submit", function (e: Event) { // Añadimos e: Event para tipar el parámetro del evento
-                const captcha = grecaptcha.getResponse();
-
-                if (!captcha) {
-                    alert("Por favor completa el reCAPTCHA.");
-                    e.preventDefault(); // Previene el envío del formulario
-                    return; // Detiene la ejecución de la función
+            form.addEventListener("submit", function (e: SubmitEvent) {
+                // Verifica si la API de reCAPTCHA está cargada
+                if (
+                    typeof grecaptcha === "undefined" ||
+                    typeof grecaptcha.getResponse === "undefined"
+                ) {
+                    console.error(
+                        "Error: La API de reCAPTCHA no está cargada correctamente.",
+                    );
+                    alert(
+                        "Por favor, inténtalo de nuevo. Error al cargar reCAPTCHA.",
+                    );
+                    e.preventDefault(); // Detiene el envío
+                    return;
                 }
 
-                const lastSent = localStorage.getItem("lastSentTime");
-                const now = Date.now();
+                const response = grecaptcha.getResponse();
 
-                // Convertir lastSent a número para la resta, si existe
-                if (lastSent && now - parseInt(lastSent) < 60000) {
-                    alert("Espera un momento antes de enviar nuevamente.");
+                if (response.length === 0) {
+                    // El usuario no ha marcado el checkbox
+                    alert(
+                        "Por favor, completa el reCAPTCHA para verificar que no eres un robot.",
+                    );
                     e.preventDefault(); // Previene el envío del formulario
-                    return; // Detiene la ejecución de la función
                 }
-
-                // Si todo es válido, guarda el tiempo y permite el envío.
-                // Es importante guardar `now` como un string para localStorage.
-                localStorage.setItem("lastSentTime", now.toString());
+                // Si response.length > 0, significa que el reCAPTCHA fue completado
+                // y el formulario se enviará normalmente (ya que no llamamos a e.preventDefault())
             });
         } else {
-            // Opcional: Si el formulario no se encuentra, puedes registrar un error en la consola.
-            // Esto es útil para la depuración si el ID 'miFormulario' no es correcto o el HTML no se carga.
-            console.error("Error: El formulario con ID 'miFormulario' no fue encontrado en el DOM.");
+            console.error(
+                "Error: El formulario con ID 'recaptchaForm' no fue encontrado.",
+            );
         }
     });
 </script>
 
 <style>
-    /* ... Tus estilos CSS aquí (sin cambios) ... */
+    /* Tus estilos CSS aquí (sin cambios importantes, solo completado el box-shadow) */
     :root {
         --color-primary: #002c41d6; /* Azul oscuro */
         --color-secondary: #e4a92d; /* Amarillo-naranja */
@@ -190,4 +201,35 @@ const { titulo } = Astro.props;
     .input-group input[type="text"]:focus {
         border-color: var(--color-secondary); /* Borde secundario al enfocar */
         outline: none;
-        box-shadow: 0 0 0 4px rgba(2
+        box-shadow: 0 0 0 4px rgba(228, 169, 45, 0.5); /* Corregido el CSS cortado */
+    }
+
+    .submit-button {
+        background-color: var(--color-primary);
+        color: var(--color-text-light);
+        padding: 12px 25px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.2em;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+            background-color 0.3s ease,
+            transform 0.2s ease;
+        margin-top: 20px;
+        margin-bottom: 20px; /* Espacio debajo del botón y antes del captcha */
+    }
+
+    .submit-button:hover {
+        background-color: var(--color-secondary); /* Un tono más oscuro */
+        transform: translateY(-4px);
+    }
+
+    /* Estilos específicos para el reCAPTCHA para centrarlo */
+    .g-recaptcha {
+        margin-top: 20px;
+        margin-bottom: 20px; /* Asegura espacio si está entre elementos */
+        display: flex;
+        justify-content: center; /* Centra el widget de reCAPTCHA */
+    }
+</style>
